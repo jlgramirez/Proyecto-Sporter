@@ -4,3 +4,4 @@ Repositorio para el desarrollo de la app sporter.
 * Jose Luis Gonzalez Ramirez, Arquitectura, Diseño.
 * Daniel Cuevas Pérez, Desarrollador.
 * Rodrigo Díaz Rodríguez, Arquitectura, Diseño.
+* Rayan Chaves Da Silva, Desarrollador.
