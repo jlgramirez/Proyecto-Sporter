@@ -2,9 +2,8 @@
 ## Del proyecto <project name>
 
 Versión 0.2  
-Generada por Francisco Javier Santiburcio Vicente  
-Sporter 
-14/04/2020  
+Generada por el equipo Sporter  
+05/05/2020  
 
 Índice
 =================
@@ -36,11 +35,10 @@ Sporter
 * 6 [Apendices](#6-apendices) 
   
 ## Versiones
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+| Name               | Date       | Reason For Changes   | Version |
+|--------------------|------------|----------------------|---------|
+| Javier Santiburcio | 14/04/2020 | Primera idea         | 0.1     |
+| Sporter            | 05/05/2020 | Actualización grupal | 0.2     |
 
 ## 1. Introducción
 
@@ -81,6 +79,10 @@ El sistema permite al usuario ver en el tablón de publicaciones los eventos má
 -El administrador puede eliminar eventos y perfiles;
 El sistema permite al administrador acceder a la lista de todos los perfiles,eventos para poder eliminarlos si fuese necesario.
 
+Diagrama de casos de uso:;
+
+![DiagramaCasosDeUso](https://github.com/JavierSantiburcio/Proyecto-Sporter/blob/master/Documentacion/ImagenDiagramaCasosDeUso.png)
+
 ### 2.3 Restricciones del producto
 
 
@@ -113,13 +115,15 @@ Habrá que tener en cuenta la dependencia de las aplicaciones de terceros para e
 
 Esta subsección define todos las interfaces de entrada y salida del sistema de software.
 
-#### 3.1 Interfaces con el usuario   (falta imagen para mostrar en github)
+#### 3.1 Interfaces con el usuario
 
 Nuestra aplicación necesitará una interfaz de usuario. Esta interfaz 3 pantallas diferentes.; 
 - La ventana de Login consistirá en la pantalla de inicio de la aplicación y contará con dos botones: uno para iniciar sesión y otro para registrarse, así como el logo de 'Sporter' en grande, un campo para introducir el correo electronico del usuario y otro para la contraseña del mismo. Cuando se pulse el botón "registrar", aparecerá un formulario para introducir los datos a rellenar. Si pulsamos el botón iniciar sesión accederá a la ventana principal de la aplicación (Tablón de publicaciones) habiendo introducido previamente el correo y contraseña correcta.;
 - La ventana tablón de publicaciones estará compuesto por una parte central donde se muestran los eventos y el perfil de usuario tal como aparece en la imagen. A la izquierda aparecerá un botón para crear eventos,el cual al pulsarlo muestra el formulario de  crear evento. A la derecha se ve un icono que identifica el perfil del usuario y su nombre.Al pulsarlo te muestra la pantallla de perfil.;
 - La ventana perfil de usuario mostrará el perfil con la foto(icono), nombre y deportes favoritos y debajo todos los eventos en los que participa o ha creado el mismo.;
 - Si el usuario es el Administrador la pantalla principal constará de dos tablas que contendrán todos los eventos y perfiles dados de alta en la aplicación que le permitirá administrar la eliminación de eventos y/o perfiles de usuarios.;
+
+![Borrardor](https://github.com/JavierSantiburcio/Proyecto-Sporter/blob/master/Documentacion/Borrador_Sporter.png)
 
 
 #### 3.3 Interfaces con el Software
@@ -155,7 +159,7 @@ El usuario podrá iniciar sesión en la aplicación usando el email asociado a s
 
 ### R5 - Publicar un evento 
 El usuario podrá publicar un evento que tendrá un nombre, un creador (el propio usuario), una ubicación, un deporte, un número de participantes. Podrá hacerlo desde el tablón de publicaciones o desde su perfil.
-#### Dependerá de R4.
+#### Dependerá de R4.
 #### Prioridad alta
 #### Debe de haber eventos a los que asociar a perfiles
 
@@ -207,20 +211,20 @@ El sistema muestra al usuario la ventana donde podrá visualizar su propio perfi
 El sistema tendrá un tiempo de respuesta medio máximo de 3s ante las acciones del usuario.
 #### Prioridad baja.
 #### Dependera de R1, R11, R12.
-#### La aplicación deberá de tener un tiempo de respuesta.
+#### La aplicación deberá de tener un tiempo de respuesta.
 
 ### R14 - Perfiles duplicados
 El sistema comprobará que no se pueda crear un nuevo perfil de ususario con email ya existente en la base de datos.
 #### Prioridad alta.
 #### Dependera de R1, R3.
-#### Evitar datos redundantes en la base de datos y que otro usuario pueda sobresecribir un perfil existente.
+#### Evitar datos redundantes en la base de datos y que otro usuario pueda sobresecribir un perfil existente.
 
 ### R15 - Perfil administrador
 El sistema mostrará al usuario administrador una ventana con dos columnas "eventos, usuarios" dados de alta en la base de datos.
 El administrador podrá usar el filtro de búsqueda para acotar los datos mostrados. 
 #### Prioridad alta.
 #### Dependera de R1, R4.
-#### Necesario que exista un administador para mantener la consistencia de la Base de datos y eliminar perfiles y eventos falsos. 
+#### Necesario que exista un administador para mantener la consistencia de la Base de datos y eliminar perfiles y eventos falsos. 
 
 ### R16 - Eliminar Perfil desde administrador
 El administrador podrá eliminar un perfil de usuario desde la ventana principal de su perfil.
@@ -285,7 +289,7 @@ El usuario podrá iniciar sesión en la aplicación usando el email asociado a s
 
 ### R5 - Publicar un evento 
 El usuario podrá publicar un evento que tendrá un nombre, un creador (el propio usuario), una ubicación, un deporte, un número de participantes. Podrá hacerlo desde el tablón de publicaciones o desde su perfil.
-#### Dependerá de R4.
+#### Dependerá de R4.
 #### Prioridad alta
 #### Debe de haber eventos a los que asociar a perfiles
 
@@ -338,7 +342,7 @@ El sistema mostrará al usuario administrador una ventana con dos columnas "even
 El administrador podrá usar el filtro de búsqueda para acotar los datos mostrados. 
 #### Prioridad alta.
 #### Dependera de R1, R4.
-#### Necesario que exista un administador para mantener la consistencia de la Base de datos y eliminar perfiles y eventos falsos. 
+#### Necesario que exista un administador para mantener la consistencia de la Base de datos y eliminar perfiles y eventos falsos. 
 
 ### R16 - Eliminar Perfil desde administrador
 El administrador podrá eliminar un perfil de usuario desde la ventana principal de su perfil.
@@ -358,13 +362,13 @@ El administrador podrá eliminar un evento desde la ventana principal de su perf
 El sistema tendrá un tiempo de respuesta medio máximo de 3s ante las acciones del usuario.
 #### Prioridad baja.
 #### Dependera de R1, R11, R12.
-#### La aplicación deberá de tener un tiempo de respuesta.
+#### La aplicación deberá de tener un tiempo de respuesta.
 
 ### R14 - Perfiles duplicados
 El sistema comprobará que no se pueda crear un nuevo perfil de ususario con email ya existente en la base de datos.
 #### Prioridad alta.
 #### Dependera de R1, R3.
-#### Evitar datos redundantes en la base de datos y que otro usuario pueda sobresecribir un perfil existente.
+#### Evitar datos redundantes en la base de datos y que otro usuario pueda sobresecribir un perfil existente.
  
 #### 4.3.1 Rendimiento
 
