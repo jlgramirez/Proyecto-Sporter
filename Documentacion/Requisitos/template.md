@@ -68,11 +68,12 @@ Este es un producto nuevo que no pertenece a ningún sistema mayor.
 ### 2.2 Funciones del producto
 
 Las funciones principales que 'Sporter' llevará a cabo serán:
-*La creación y edición de un perfil: El usuario podrá crear un perfil que contendrá sus datos, deportes favoritos y ubicación así como podrá editarlo en un futuro
-*La publicación de eventos: El usuario podrá publicar un evento indicando un deporte, ubicación y fecha/hora
-*El emparejamiento entre usuario-evento: El sistema permite al usuario ver en el tablón de publicaciones los eventos más adecuados en base a sus datos
-*Filtro de búsqueda de eventos: El sistema permite al usuario ver en el tablón de publicaciones los eventos más adecuados en base a los filtros seleccionados
-*El administrador puede eliminar eventos y perfiles: El sistema permite al administrador acceder a la lista de todos los perfiles,eventos para poder eliminarlos si fuese necesario.
+
+* La creación y edición de un perfil: El usuario podrá crear un perfil que contendrá sus datos, deportes favoritos y ubicación así como podrá editarlo en un futuro
+* La publicación de eventos: El usuario podrá publicar un evento indicando un deporte, ubicación y fecha/hora
+* El emparejamiento entre usuario-evento: El sistema permite al usuario ver en el tablón de publicaciones los eventos más adecuados en base a sus datos
+* Filtro de búsqueda de eventos: El sistema permite al usuario ver en el tablón de publicaciones los eventos más adecuados en base a los filtros seleccionados
+* El administrador puede eliminar eventos y perfiles: El sistema permite al administrador acceder a la lista de todos los perfiles,eventos para poder eliminarlos si fuese necesario.
 
 Diagrama de casos de uso:
 
@@ -80,7 +81,7 @@ Diagrama de casos de uso:
 
 ### 2.3 Restricciones del producto
 
-*Será compatible con los siguientes sistemas operativos:
+Será compatible con los siguientes sistemas operativos:
 - Arquitectura del sistema 32/64 bit.
 - Windows 10 (8u51 y superiores).
 - Windows 8.x (escritorio).
@@ -90,14 +91,14 @@ Diagrama de casos de uso:
 - Windows Server 2012 y 2012 R2 (64 bits).
 - Mac OS Catalina Versión 10.15.4.
 
-*Requisitos mínimos del PC:
+Requisitos mínimos del PC:
 - 512 Mb de memoria Ram.
 - 1024 Mb máquina virtual.
 - 1 GB de espacio de disco duro.
 
 ### 2.4 Perfiles de usuario
 
-*Los distintos perfiles de usuarios que se pueden dar son:
+Los distintos perfiles de usuarios que se pueden dar son:
 - Usuario administrador: usuario con privilegios en la aplicación que administra eventos y perfiles de usuarios.
 - Usuario principiante: usuario que no ha utilizado anteriormente la aplicación y está descubriendo las principales funciones.
 - Usuario casual: usuario que no usa la aplicación de forma frecuente pero conoce las principales funciones. 
@@ -107,7 +108,7 @@ Diagrama de casos de uso:
 
 #### 3.1 Interfaces con el usuario
 
-Nuestra aplicación necesitará una interfaz de usuario. Esta interfaz contará con 3 pantallas diferentes.
+Nuestra aplicación necesitará una interfaz de usuario. Esta interfaz contará con 3 pantallas diferentes:
 * La ventana de Login consistirá en una pantalla de inicio de la aplicación que contará con dos botones: uno para iniciar sesión y otro para registrarse, así como el logo de 'Sporter' en grande, un campo para introducir el correo electrónico del usuario y otro para la contraseña del mismo. Cuando se pulse el botón "registrar", aparecerá un formulario para introducir los datos a rellenar. Si pulsamos el botón iniciar sesión accederá a la ventana principal de la aplicación (tablón de publicaciones) habiendo introducido previamente un correo y contraseña correcta.
 * La ventana tablón de publicaciones estará compuesta por una parte central donde se muestran los eventos. Tal como aparece en la imagen. A la izquierda aparecerá un botón para crear eventos, el cual al pulsarlo muestra el formulario de  crear evento. A la derecha se ve un icono que identifica el perfil del usuario y su nombre. Al pulsarlo te muestra la pantalla de perfil.
 * La ventana perfil de usuario mostrará el perfil con la foto(icono), nombre y deportes favoritos y debajo todos los eventos en los que participa o ha creado el mismo.
