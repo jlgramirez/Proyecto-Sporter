@@ -86,7 +86,7 @@ Diagrama de casos de uso:;
 ### 2.3 Restricciones del producto
 
 
-Requisitos minimos:;
+Sera compatible con:
 Windows 10 (8u51 y superiores);
 Windows 8.x (escritorio);
 Windows 7 SP1;
