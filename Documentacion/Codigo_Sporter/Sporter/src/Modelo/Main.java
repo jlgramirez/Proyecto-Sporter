@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Main {
-	//hey mama
+	//hey mama, segundo intento
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
