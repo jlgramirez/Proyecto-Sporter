@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Main {
-	//porque no funciona XD, vale ahora?
+	//funciona?
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
