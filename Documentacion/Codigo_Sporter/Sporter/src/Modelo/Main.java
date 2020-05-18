@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Main {
-	//h
+	//hola
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
@@ -16,7 +16,7 @@ public class Main {
 		command  = connection.createStatement();
 		
 		Persona persona = new Persona(command);
-		persona.crearPerfil("dani", "Málaga", "daniel@gmail.com", "7544");
+		persona.crearPerfil("dani", "Mï¿½laga", "daniel@gmail.com", "7544");
 	}
 
 }
