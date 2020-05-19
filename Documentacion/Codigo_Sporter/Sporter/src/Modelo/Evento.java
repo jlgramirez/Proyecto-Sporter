@@ -10,9 +10,10 @@ public class Evento {
 	private Integer numeroParticipantes;
 	private Date fecha;
 	private int deporte;
+	private int organiza;
 	
 	private Statement command;
-	private int idcreador;
+
 	
 	public Evento(Statement command) {
 		id = -1;ubicacion = null;numeroParticipantes = -1;fecha=null;deporte = -1;
@@ -29,7 +30,7 @@ public class Evento {
 		numeroParticipantes = data.getInt(3);
 		fecha = data.getDate(4);
 		
-		idcreador = data.getInt(5);
+		organiza = data.getInt(5);
 	}
 	
 	public String getUbicacion() {
@@ -78,7 +79,7 @@ public class Evento {
 	}
 	
 	public void modificar_evento(int usuario,String ubicacion,Date fecha,int deporte) throws SQLException {
-		if(idcreador==usuario) {
+		if(organiza==usuario) {
 			if(ubicacion != null) setUbicacion(ubicacion);
 			if(fecha != null) setFecha(fecha);
 			if(deporte != -1) setDeporte(deporte);
@@ -86,11 +87,16 @@ public class Evento {
 	}
 	
 	public void borrarevento(int usuario) throws SQLException {
-		if(idcreador == usuario) {
-			command.execute("DELETE FROM `spoter`.`usuarios` WHERE (`idUsuarios` = '\" + id + \"')");
+		if(organiza == usuario) {
+			command.execute("DELETE FROM `spoter`.`evento` WHERE (`idUsuarios` = '\" + id + \"')");
 		}
 	}
+	
 	public void unirse(int usuario) throws SQLException {
 		command.execute("INSERT INTO `spoter`.`usuarios_has_evento` (`usuarios_idUsuarios`, `evento_id_Evento`) VALUES ('"+usuario+"', '"+id+"');");
+	}
+	
+	public void dejarEvento(int usuario) throws SQLException {
+		command.execute("DELETE FROM `spoter`.`usuarios_has_evento` WHERE (`usuarios_idUsuarios` = '"+usuario+"') and (`evento_id_Evento` = '"+id+"');");
 	}
 }

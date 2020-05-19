@@ -9,6 +9,7 @@ public class Persona extends Usuario{
 	private int id;
 	private String localidad;
 	public ArrayList<Integer> participa = new ArrayList<Integer>();
+	public ArrayList<Integer> practica = new ArrayList<Integer>();
 	
 	public Persona(Statement command) {
 		super(command);
@@ -26,6 +27,9 @@ public class Persona extends Usuario{
 		ResultSet data = command.executeQuery("Select localidad from spoter.usuarios user where user.idUsuarios ="+ 1 +";");
 		data.next();
 		localidad = data.getString(1);
+		
+		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; ");
+		while(data.next()) participa.add(data.getInt(1));
 		
 		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; ");
 		while(data.next()) participa.add(data.getInt(1));
