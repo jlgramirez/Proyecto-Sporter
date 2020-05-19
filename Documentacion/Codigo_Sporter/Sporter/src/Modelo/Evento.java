@@ -9,18 +9,27 @@ public class Evento {
 	private String ubicacion;
 	private Integer numeroParticipantes;
 	private Date fecha;
-	private String deporte;
+	private int deporte;
+	
 	private Statement command;
+	private int idcreador;
+	
+	public Evento(Statement command) {
+		id = -1;ubicacion = null;numeroParticipantes = -1;fecha=null;deporte = -1;
+		this.command = command;
+	}
 	
 	public Evento(Statement command,int id) throws SQLException {
 		this.command = command;
 		this.id = id;
 		ResultSet data = command.executeQuery("SELECT * FROM spoter.evento even where even.id_Evento = "+id+";"); 
 		data.next();
-		deporte = data.getString(6);
+		deporte = data.getInt(6);
 		ubicacion = data.getString(2);
 		numeroParticipantes = data.getInt(3);
 		fecha = data.getDate(4);
+		
+		idcreador = data.getInt(5);
 	}
 	
 	public String getUbicacion() {
@@ -28,7 +37,7 @@ public class Evento {
 	}
 	
 	public void setUbicacion(String ubicacion) throws SQLException {
-		ResultSet data = command.executeQuery("UPDATE `spoter`.`evento` SET `ubicacion` = '"+ ubicacion +"' WHERE (`id_Evento` = '" + id +"');");
+		command.execute("UPDATE `spoter`.`evento` SET `ubicacion` = '"+ ubicacion +"' WHERE (`id_Evento` = '" + id +"');");
 		this.ubicacion = ubicacion;
 		
 	}
@@ -48,10 +57,40 @@ public class Evento {
 		command.execute("UPDATE `spoter`.`evento` SET `fecha` = '"+ fecha +"' WHERE (`id_Evento` = '" + id +"');");
 		this.fecha = fecha;
 	}
-	public String getDeporte() {
+	public int getDeporte() {
 		return deporte;
 	}
-	public void setDeporte(String deporte) {
+	public void setDeporte(int deporte) throws SQLException {
+		command.execute("UPDATE `spoter`.`evento` SET `deporte` = '"+ deporte +"' WHERE (`id_Evento` = '" + id +"');");
 		this.deporte = deporte;
+	}
+	
+	//En el diagrama ponia devolver un evento, pero he dejado esta clase como la representacion de ese evento
+	public void crearEvento(String ubicacion, int numeroParcipantes,Date fecha,int creador,int deporte) throws SQLException {
+		command.execute("INSERT INTO `spoter`.`evento` (`ubicacion`, `numParticipantesAct`, `fecha`, `Creador`, `Deporte`)"
+				+ " VALUES ('"+ubicacion+"', '"+numeroParcipantes+"', '"+fecha+"', '"+creador+"', '"+deporte+"');");
+		this.ubicacion = ubicacion;this.numeroParticipantes = numeroParcipantes;this.fecha = fecha;
+
+		ResultSet data = command.executeQuery("Select id_Evento,creador from spoter.evento order by idEvento desc;");
+		data.next();
+		id = data.getInt(1);
+		creador = data.getInt(2);
+	}
+	
+	public void modificar_evento(int usuario,String ubicacion,Date fecha,int deporte) throws SQLException {
+		if(idcreador==usuario) {
+			if(ubicacion != null) setUbicacion(ubicacion);
+			if(fecha != null) setFecha(fecha);
+			if(deporte != -1) setDeporte(deporte);
+		}
+	}
+	
+	public void borrarevento(int usuario) throws SQLException {
+		if(idcreador == usuario) {
+			command.execute("DELETE FROM `spoter`.`usuarios` WHERE (`idUsuarios` = '\" + id + \"')");
+		}
+	}
+	public void unirse(int usuario) throws SQLException {
+		command.execute("INSERT INTO `spoter`.`usuarios_has_evento` (`usuarios_idUsuarios`, `evento_id_Evento`) VALUES ('"+usuario+"', '"+id+"');");
 	}
 }
