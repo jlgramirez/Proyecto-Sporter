@@ -1,5 +1,8 @@
 package Modelo;
 import java.sql.*;
+
+// HOLA 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -8,13 +11,13 @@ public class Main {
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
-	private String contraseña;
+	private String contraseï¿½a;
 	
 	private final static String database = "jdbc:mysql://localhost:3306/spoter";
 	
 	public static void main(String[] args) throws SQLException, ParseException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce tu contraseña:");
+		System.out.println("Introduce tu contraseï¿½a:");
 		connection = DriverManager.getConnection(database,"root",sc.next());
 		command  = connection.createStatement();
 		System.out.println("Introduce prueba:");
