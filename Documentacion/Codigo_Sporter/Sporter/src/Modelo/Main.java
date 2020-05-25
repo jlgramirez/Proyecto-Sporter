@@ -16,7 +16,7 @@ public class Main {
 	
 	public static void main(String[] args) throws SQLException, ParseException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce tu contraseï¿½a:");
+		System.out.println("Introduce tu contraseña:");
 		connection = DriverManager.getConnection(database,"root",sc.next());
 		command  = connection.createStatement();
 		System.out.println("Introduce prueba:");
