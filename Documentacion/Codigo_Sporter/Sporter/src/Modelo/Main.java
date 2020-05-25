@@ -10,7 +10,7 @@ public class Main {
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
-	private String contraseï¿½a;
+	private String contraseña;
 	
 	private final static String database = "jdbc:mysql://localhost:3306/spoter";
 	
