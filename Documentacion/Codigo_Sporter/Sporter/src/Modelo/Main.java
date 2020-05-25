@@ -1,7 +1,6 @@
 package Modelo;
 import java.sql.*;
 
-// HOLA 
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
