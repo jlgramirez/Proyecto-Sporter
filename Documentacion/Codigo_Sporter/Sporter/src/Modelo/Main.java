@@ -10,13 +10,13 @@ public class Main {
 	private static Connection connection;
 	private static Statement command;
 	private static ResultSet data;
-	private String contrase�a;
+	private String contraseña;
 	
 	private final static String database = "jdbc:mysql://localhost:3306/spoter";
 	
 	public static void main(String[] args) throws SQLException, ParseException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce tu contrase�a:");
+		System.out.println("Introduce tu contraseña:");
 		connection = DriverManager.getConnection(database,"root",sc.next());
 		command  = connection.createStatement();
 		System.out.println("Introduce prueba:");
