@@ -1,5 +1,4 @@
 package Modelo;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,7 +7,7 @@ public class Evento {
 	private int id;
 	private String ubicacion;
 	private Integer numeroParticipantes;
-	private Date fecha;
+	private String fecha;
 	private int deporte;
 	private int organiza;
 	
@@ -28,7 +27,7 @@ public class Evento {
 		deporte = data.getInt(6);
 		ubicacion = data.getString(2);
 		numeroParticipantes = data.getInt(3);
-		fecha = data.getDate(4);
+		fecha = data.getString(4);
 		
 		organiza = data.getInt(5);
 	}
@@ -57,10 +56,11 @@ public class Evento {
 		command.execute("UPDATE `spoter`.`evento` SET `numParticipantesAct` = '"+ numeroParticipantes +"' WHERE (`id_Evento` = '" + id +"');");
 		this.numeroParticipantes = numeroParticipantes;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) throws SQLException {
+	
+	public void setFecha(String fecha) throws SQLException {
 		command.execute("UPDATE `spoter`.`evento` SET `fecha` = '"+ fecha +"' WHERE (`id_Evento` = '" + id +"');");
 		this.fecha = fecha;
 	}
@@ -75,18 +75,19 @@ public class Evento {
 	
 	
 	//En el diagrama ponia devolver un evento, pero he dejado esta clase como la representacion de ese evento
-	public void crearEvento(Persona persona, int deporte,String ubicacion,Date fecha,int numeroParcipantes) throws SQLException {
+	public void crearEvento(Persona persona, int deporte,String ubicacion,String fecha,int numeroParcipantes) throws SQLException {
 		command.execute("INSERT INTO `spoter`.`evento` (`ubicacion`, `numParticipantesAct`, `fecha`, `Creador`, `Deporte`)"
 				+ " VALUES ('"+ubicacion+"', '"+numeroParcipantes+"', '"+fecha+"', '"+persona.getId()+"', '"+deporte+"');");
-		this.ubicacion = ubicacion;this.numeroParticipantes = numeroParcipantes;this.fecha = fecha;
+		this.ubicacion = ubicacion;this.numeroParticipantes = numeroParcipantes;this.deporte = deporte;
 
-		ResultSet data = command.executeQuery("Select id_Evento,creador from spoter.evento order by idEvento desc;");
+		ResultSet data = command.executeQuery("Select id_Evento,creador,fecha from spoter.evento order by id_Evento desc;");
 		data.next();
 		id = data.getInt(1);
 		organiza = data.getInt(2);
+		this.fecha = data.getString(3);
 	}
 	
-	public void modificar_evento(int usuario,String ubicacion,Date fecha,int deporte) throws SQLException {
+	public void modificar_evento(int usuario,String ubicacion,String fecha,int deporte) throws SQLException {
 		if(organiza==usuario) {
 			if(ubicacion != null) setUbicacion(ubicacion);
 			if(fecha != null) setFecha(fecha);
@@ -96,7 +97,7 @@ public class Evento {
 	
 	public void borrarevento(Persona persona) throws SQLException {
 		if(organiza == persona.getId()) {
-			command.execute("DELETE FROM `spoter`.`evento` WHERE (`idUsuarios` = '\" + id + \"')");
+			command.execute("delete from spoter.evento where id_Evento = "+this.id+";");
 		}
 	}
 	
