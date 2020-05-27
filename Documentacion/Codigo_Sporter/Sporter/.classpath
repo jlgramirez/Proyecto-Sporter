@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="lib/mockito-all-2.0.2-beta.jar"/>
 	<classpathentry kind="lib" path="lib/mockito3.0.jar"/>
 	<classpathentry kind="lib" path="lib/opentest4j-1.1.1.jar"/>
+	<classpathentry kind="src" path="images"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
