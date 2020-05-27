@@ -3,7 +3,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Administrador extends Usuario{
-	
+
 	public Administrador(Statement command, int id) throws SQLException {
 		super(command, id);
 		if(!getAdmin()) {
