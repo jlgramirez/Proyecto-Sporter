@@ -4,10 +4,6 @@ import java.sql.Statement;
 
 public class Administrador extends Usuario{
 
-	public Administrador(Statement command) {
-		super(command);
-	}
-	
 	public Administrador(Statement command, int id) throws SQLException {
 		super(command, id);
 		if(!getAdmin()) {
@@ -22,5 +18,7 @@ public class Administrador extends Usuario{
 			throw new RuntimeException("No existe ese id de usuario");
 		}
 	}
-	//public void eliminarEvento (evento Evento){}
+	public void eliminarEvento (Evento evento) throws SQLException{
+		command.execute("DELETE FROM `spoter`.`evento` WHERE (`id_Evento` = '"+evento.getId()+"');");
+	}
 }

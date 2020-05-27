@@ -8,6 +8,7 @@ public class Persona extends Usuario{
 	
 	private int id;
 	private String localidad;
+	private boolean existente;
 	public ArrayList<Integer> participa = new ArrayList<Integer>();
 	public ArrayList<Integer> practica = new ArrayList<Integer>();
 	
@@ -16,6 +17,7 @@ public class Persona extends Usuario{
 		id = -1;
 		localidad = null;
 		participa = null;
+		existente = false;
 	}
 	
 	public Persona(Statement command, int id) throws SQLException {
@@ -33,6 +35,7 @@ public class Persona extends Usuario{
 		
 		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; ");
 		while(data.next()) participa.add(data.getInt(1));
+		existente = true;
 	}
 
 	public int getId() {
@@ -44,10 +47,15 @@ public class Persona extends Usuario{
 	}
 	
 	public void modificarPerfil(String nombre,String localidad) throws SQLException {
+		if(!existente) throw new RuntimeException("Un usuario que no existe no se modifica");
+		
 		command.execute("UPDATE `spoter`.`usuarios` SET `nombre` = '"+nombre+"', `localidad` = '"+localidad+"' WHERE (`idUsuarios` = "+id+");");
+		
 	}
 	
 	public void crearPerfil(String nombre,String localidad,String email,String password) throws SQLException {
+		if(existente) throw new RuntimeException("Un usuario que existe no puede crear otro usuario");
+		
 		command.execute("INSERT INTO `spoter`.`usuarios` (`nombre`, `email`, `password`, `admin`, `localidad`) VALUES "
 				+ "('"+ nombre +"', '"+ email +"', '"+ password +"', '"+ 0 +"', '"+ localidad +"');");
 		
@@ -55,5 +63,15 @@ public class Persona extends Usuario{
 		ResultSet data = command.executeQuery("Select idUsuarios from spoter.usuarios order by idUsuarios desc;");
 		data.next();
 		id = data.getInt(1);
+		
+		
+		existente = !existente;
+	}
+	
+	//He metido esta funcion para que un usuario pueda decir que deportes practica
+	public void añadirDeporte(int deporte) throws SQLException {
+		if(!existente) throw new RuntimeException("Un usuario que no existe no puede tener ni añadir deportes");
+		command.execute("INSERT INTO `spoter`.`usuarios_has_deporte` (`usuarios_idUsuarios`, `deporte_idDeporte`) VALUES ('"+getId()+"', '"+deporte+"');");
+		practica.add(deporte);
 	}
 }
