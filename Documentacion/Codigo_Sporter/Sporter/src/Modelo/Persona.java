@@ -67,9 +67,9 @@ public class Persona extends Usuario{
 		
 		existente = !existente;
 	}
-	
-	//He metido esta funcion para que un usuario pueda decir que deportes practica
-	public void añadirDeporte(int deporte) throws SQLException {
+
+	public void meterDeporte(int deporte) throws SQLException {
+		// TODO Auto-generated method stub
 		if(!existente) throw new RuntimeException("Un usuario que no existe no puede tener ni añadir deportes");
 		command.execute("INSERT INTO `spoter`.`usuarios_has_deporte` (`usuarios_idUsuarios`, `deporte_idDeporte`) VALUES ('"+getId()+"', '"+deporte+"');");
 		practica.add(deporte);

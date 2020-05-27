@@ -83,7 +83,7 @@ public class Pruebas {
 		assertEquals(res.getString(2), "d");
 		
 	//Se Añade deporte correctamente
-		persona2.añadirDeporte(1);
+		persona2.meterDeporte(1);
 		
 		res = command.executeQuery("select deporte_idDeporte from spoter.usuarios_has_deporte where spoter.usuarios_has_deporte.usuarios_idUsuarios = "+persona2.getId()+";");
 		res.next();
