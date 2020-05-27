@@ -33,6 +33,12 @@ public class Evento {
 		organiza = data.getInt(5);
 	}
 	
+	
+	//Setters y getters
+	public int getId() {
+		return id;
+	}
+	
 	public String getUbicacion() {
 		return ubicacion;
 	}
@@ -65,17 +71,19 @@ public class Evento {
 		command.execute("UPDATE `spoter`.`evento` SET `deporte` = '"+ deporte +"' WHERE (`id_Evento` = '" + id +"');");
 		this.deporte = deporte;
 	}
+	//Final setters getters
+	
 	
 	//En el diagrama ponia devolver un evento, pero he dejado esta clase como la representacion de ese evento
-	public void crearEvento(String ubicacion, int numeroParcipantes,Date fecha,int creador,int deporte) throws SQLException {
+	public void crearEvento(Persona persona, int deporte,String ubicacion,Date fecha,int numeroParcipantes) throws SQLException {
 		command.execute("INSERT INTO `spoter`.`evento` (`ubicacion`, `numParticipantesAct`, `fecha`, `Creador`, `Deporte`)"
-				+ " VALUES ('"+ubicacion+"', '"+numeroParcipantes+"', '"+fecha+"', '"+creador+"', '"+deporte+"');");
+				+ " VALUES ('"+ubicacion+"', '"+numeroParcipantes+"', '"+fecha+"', '"+persona.getId()+"', '"+deporte+"');");
 		this.ubicacion = ubicacion;this.numeroParticipantes = numeroParcipantes;this.fecha = fecha;
 
 		ResultSet data = command.executeQuery("Select id_Evento,creador from spoter.evento order by idEvento desc;");
 		data.next();
 		id = data.getInt(1);
-		creador = data.getInt(2);
+		organiza = data.getInt(2);
 	}
 	
 	public void modificar_evento(int usuario,String ubicacion,Date fecha,int deporte) throws SQLException {
@@ -86,17 +94,17 @@ public class Evento {
 		}
 	}
 	
-	public void borrarevento(int usuario) throws SQLException {
-		if(organiza == usuario) {
+	public void borrarevento(Persona persona) throws SQLException {
+		if(organiza == persona.getId()) {
 			command.execute("DELETE FROM `spoter`.`evento` WHERE (`idUsuarios` = '\" + id + \"')");
 		}
 	}
 	
-	public void unirse(int usuario) throws SQLException {
-		command.execute("INSERT INTO `spoter`.`usuarios_has_evento` (`usuarios_idUsuarios`, `evento_id_Evento`) VALUES ('"+usuario+"', '"+id+"');");
+	public void unirse(Persona persona) throws SQLException {
+		command.execute("INSERT INTO `spoter`.`usuarios_has_evento` (`usuarios_idUsuarios`, `evento_id_Evento`) VALUES ('"+persona.getId()+"', '"+id+"');");
 	}
 	
-	public void dejarEvento(int usuario) throws SQLException {
-		command.execute("DELETE FROM `spoter`.`usuarios_has_evento` WHERE (`usuarios_idUsuarios` = '"+usuario+"') and (`evento_id_Evento` = '"+id+"');");
+	public void dejarEvento(Persona persona) throws SQLException {
+		command.execute("DELETE FROM `spoter`.`usuarios_has_evento` WHERE (`usuarios_idUsuarios` = '"+persona.getId()+"') and (`evento_id_Evento` = '"+id+"');");
 	}
 }
