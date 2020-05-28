@@ -5,9 +5,11 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import colores.Colores;
+import imagenes.Imagenes;
 
 public class VentanaLogin extends JFrame {
 	private static Colores colores = new Colores();
+	private Imagenes imagenes = new Imagenes();
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -32,8 +34,8 @@ public class VentanaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaLogin() {
-		
-		
+		setTitle("Sporter");
+		setIconImage(imagenes.getLogo_sin_nombreEscalado(16, 16));
 		setForeground(colores.getNaranja());
 		setBackground(colores.getNaranja());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,8 +81,7 @@ public class VentanaLogin extends JFrame {
 		
 		int width = lblNewLabel_2.getWidth();
 		int height = lblNewLabel_2.getHeight();
-		Image logo = new ImageIcon(this.getClass().getResource("/logo_sin_fondo.png")).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		lblNewLabel_2.setIcon(new ImageIcon(logo));
+		lblNewLabel_2.setIcon(new ImageIcon(imagenes.getLogo_sin_fondoEscalado(width, height)));
 		
 		contentPane.add(lblNewLabel_2);
 		
