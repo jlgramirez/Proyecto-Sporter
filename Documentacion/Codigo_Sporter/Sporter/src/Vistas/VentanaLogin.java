@@ -34,6 +34,7 @@ public class VentanaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaLogin() {
+		
 		setTitle("Sporter");
 		setIconImage(imagenes.getLogo_sin_nombreEscalado(16, 16));
 		setForeground(colores.getNaranja());

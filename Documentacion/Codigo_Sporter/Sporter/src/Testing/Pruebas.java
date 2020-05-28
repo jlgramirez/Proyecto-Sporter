@@ -11,12 +11,14 @@ import org.junit.jupiter.api.*;
 import Modelo.Administrador;
 import Modelo.Evento;
 import Modelo.Persona;
+import Conexion.Conexion;
 
 public class Pruebas {
 	static Statement command;
 	
 	@BeforeAll
 	public static void init() throws SQLException {
+		
 		Conexion conexion = new Conexion();
 		command = conexion.getcommand();
 		
