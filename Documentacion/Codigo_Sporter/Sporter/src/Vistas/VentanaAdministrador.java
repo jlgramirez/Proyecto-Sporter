@@ -27,6 +27,7 @@ public class VentanaAdministrador extends JFrame  {
 	
 	private JList<Evento> listDeportes;
 	private JList<Evento> listLocalizacion;
+	private JTable table_2;
 
 	/**
 	 * Launch the application.
@@ -91,17 +92,20 @@ public class VentanaAdministrador extends JFrame  {
 		contentPane.add(CerrarSesion);
 		
 		JButton btnEliminar = new javax.swing.JButton();
+		btnEliminar.setName("e");
+		
+	
 		JTable tabla = new javax.swing.JTable();
 		tabla.setModel(new javax.swing.table.DefaultTableModel(
 	            new Object [][] {
-	                {null, null, null, null, null, btnEliminar},
-	                {null, null, null, null, null, btnEliminar},
-	                {null, null, null, null, null, btnEliminar},
-	                {null, null, null, null, null, btnEliminar},
-	                {null, null, null, null, null, btnEliminar}
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar}
 	            },
 	            new String [] {
-	                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+	                "Propietario", "Deporte", "Ubicacion", "Participantes", "fecha", " "
 	            }
 	        ));
 	        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,32 +118,17 @@ public class VentanaAdministrador extends JFrame  {
 			scrollPane_11.setBounds(6, 114, 475, 192);
 			scrollPane_11.setViewportView(tabla);
 			contentPane.add(scrollPane_11);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(528, 114, 218, 176);
-		contentPane.add(panel);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(19, 114, 319, 192);
-		panel.add(scrollPane_2);
-		JList list_2 = new JList();
-		contentPane.add(list_2);
+			
+			scrollPane_11.setColumnHeaderView(btnEliminar);
+			
+			
 		//CerrarSesion.addActionListener(new ActionListener()) {
 		//	public void actionPerformer(ActionEvent e) {
 		//		System.exit(0);
 		//	}
 		//}
-		
-		/*
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(new CompoundBorder());
-		scrollPane.setBounds(6, 90, 475, 216);
-		frmSpoter.getContentPane().add(scrollPane);
-		
-		JTable fondo = new JTable();
-		fondo.setBorder(new CompoundBorder());
-		fondo.setBounds(524, 90, 172, 216);
-		frmSpoter.getContentPane().add(fondo);*/
+			tabla.setPreferredScrollableViewportSize(tabla.getPreferredSize());
+
 		
 		JLabel lblNewLabel_2 = new JLabel("Administrador");
 		lblNewLabel_2.setBounds(524, 11, 108, 16);
@@ -148,8 +137,43 @@ public class VentanaAdministrador extends JFrame  {
 		JToggleButton perfil = new JToggleButton("Perfil");
 		perfil.setBounds(353, 6, 161, 29);
 		contentPane.add(perfil);
+		
+		
+		
+		JButton btn2Eliminar = new javax.swing.JButton();
+		btn2Eliminar.setName("e2");
+		
+		JTable tabla1 = new javax.swing.JTable();
+		tabla1.setModel(new javax.swing.table.DefaultTableModel(
+	            new Object [][] {
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar}
+	            },
+	            new String [] {
+	                "Nombre Usuario",  " "
+	            }
+	        ));
+	        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	                //tablaMouseClicked(evt);
+	            }
+	        });
+		
+		
+	        JScrollPane scrollPane2 = new JScrollPane();
+			scrollPane2.setBounds(525, 114, 221, 192);
+			scrollPane2.setViewportView(tabla1);
+			contentPane.add(scrollPane2);
+		
+			scrollPane_11.setColumnHeaderView(btn2Eliminar);
+			
+			tabla1.setPreferredScrollableViewportSize(tabla.getPreferredSize());
+		
+	        
 
 	
 	}
-
 }
