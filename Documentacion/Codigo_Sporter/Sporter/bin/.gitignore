@@ -1,13 +1,4 @@
-/Conexion/
-/Controlador/
 /Modelo/
-/Testing/
-/Vistas/
-/colores/
-/imagenes/
-/logo.png
-/logo_sin_fondo.png
-/logo_sin_nombre.png
-/logo_solo_nombre.png
-/tablas/
+/.gitignore
 /Render/
+/Vistas/
