@@ -17,12 +17,23 @@ public class Usuario {
 	}
 	
 	public Usuario(Statement command, int id) throws SQLException {
-		ResultSet data = command.executeQuery("Select nombre,email,password,admin from spoter.usuarios user where user.idUsuarios = "+ id +";"); 
+		ResultSet data = command.executeQuery("Select nombre,email,password,admin from spoter.usuarios user where user.idUsuarios = '"+ id +"';"); 
 		data.next();
 		nombre = data.getString(1);
 		email = data.getString(2);
 		password = data.getString(3);
 		admin = data.getBoolean(4);
+		this.command = command;
+	}
+	
+	//Daniel Cuevas
+	public Usuario(Statement command, String email) throws SQLException {
+		ResultSet data = command.executeQuery("Select * from spoter.usuarios user where user.email = '"+ email +"';"); 
+		data.next();
+		nombre = data.getString(2);
+		email = data.getString(3);
+		password = data.getString(4);
+		admin = data.getBoolean(5);
 		this.command = command;
 	}
 	

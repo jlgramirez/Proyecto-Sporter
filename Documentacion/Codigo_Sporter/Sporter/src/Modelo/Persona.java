@@ -33,8 +33,27 @@ public class Persona extends Usuario{
 		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; ");
 		while(data.next()) participa.add(data.getInt(1));
 		
-		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; ");
+		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+id+"; "); // sentencias DUPLICADAS MIRAR!!!!
 		while(data.next()) participa.add(data.getInt(1));
+		existente = true;
+	}
+	
+	//Daniel Cuevas
+	public Persona(Statement command, String email) throws SQLException {
+		super(command, email);
+		if(getAdmin()) {
+			throw new RuntimeException("Es admin");
+		}
+		ResultSet data = command.executeQuery("Select * from spoter.usuarios user where user.email = '"+ email +"';");
+		data.next();
+		id = data.getInt(1);
+		localidad = data.getString(6);
+		
+		data = command.executeQuery("SELECT evento_id_Evento FROM spoter.usuarios_has_evento where usuarios_idUsuarios = "+ id +"; ");
+		while(data.next()) participa.add(data.getInt(1));
+		
+		data = command.executeQuery("SELECT deporte_idDeporte FROM spoter.usuarios_has_deporte where usuarios_idUsuarios = "+ id +"; ");
+		while(data.next()) practica.add(data.getInt(1));
 		existente = true;
 	}
 
@@ -67,7 +86,7 @@ public class Persona extends Usuario{
 		
 		existente = !existente;
 	}
-
+	
 	public void meterDeporte(int deporte) throws SQLException {
 		// TODO Auto-generated method stub
 		if(!existente) throw new RuntimeException("Un usuario que no existe no puede tener ni añadir deportes");

@@ -3,13 +3,15 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
 import Modelo.Deporte;
 import Modelo.Persona;
 import Vistas.VentanaFrmCrearEvento;
 
-public class CtrlVentanaCrearEvento implements ActionListener {
+public class CtrlVentanaCrearEvento implements ActionListener, ItemListener {
 	
 	private VentanaFrmCrearEvento vista;
 	
@@ -18,7 +20,7 @@ public class CtrlVentanaCrearEvento implements ActionListener {
 		vista = v;
 	}
 
-	@Override
+	//Daniel: metodo que controla los eventos producidos por los botones del frm crear evento
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		
@@ -28,8 +30,19 @@ public class CtrlVentanaCrearEvento implements ActionListener {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		}else if (comando.contentEquals("CANCELAR")) {
+			vista.cerrarVentana();
 		}
 		
+	}
+
+	//Daniel: metodo que controla los eventos del choise del frm crear evento
+	public void itemStateChanged(ItemEvent e) {
+		try {
+			vista.cargarNumparticipantes();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 }

@@ -79,12 +79,17 @@ public class Evento {
 		command.execute("INSERT INTO `spoter`.`evento` (`ubicacion`, `numParticipantesAct`, `fecha`, `Creador`, `Deporte`)"
 				+ " VALUES ('"+ubicacion+"', '"+numeroParcipantes+"', '"+fecha+"', '"+persona.getId()+"', '"+deporte+"');");
 		this.ubicacion = ubicacion;this.numeroParticipantes = numeroParcipantes;this.deporte = deporte;
-
+		
+		
+		
 		ResultSet data = command.executeQuery("Select id_Evento,creador,fecha from spoter.evento order by id_Evento desc;");
 		data.next();
 		id = data.getInt(1);
 		organiza = data.getInt(2);
 		this.fecha = data.getString(3);
+		
+		//Daniel: Cuando se crea un evento, tambien hay que añadirlo a la tabla intermedia usuario_has_evento.
+		command.execute("INSERT INTO `spoter`.`usuarios_has_evento` (`usuarios_idUsuarios`, `evento_id_Evento`) VALUES ('"+ persona.getId() +"', '"+ id +"');");
 	}
 	
 	public void modificar_evento(int usuario,String ubicacion,String fecha,int deporte) throws SQLException {

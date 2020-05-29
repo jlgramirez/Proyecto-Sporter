@@ -52,7 +52,7 @@ public class VentanaLogin extends JFrame {
 		lblNewLabel.setForeground(colores.getAmarillo());
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ContraseÃ±a:");
+		JLabel lblNewLabel_1 = new JLabel("Contraseña:");
 		lblNewLabel_1.setBounds(110, 226, 93, 16);
 		lblNewLabel_1.setForeground(colores.getAmarillo());
 		contentPane.add(lblNewLabel_1);
@@ -72,7 +72,7 @@ public class VentanaLogin extends JFrame {
 		btnNewButton.setBackground(colores.getNaranja());
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Iniciar SesiÃ³n");
+		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
 		btnNewButton_1.setBounds(312, 276, 175, 29);
 		btnNewButton_1.setBackground(colores.getNaranja());
 		contentPane.add(btnNewButton_1);
