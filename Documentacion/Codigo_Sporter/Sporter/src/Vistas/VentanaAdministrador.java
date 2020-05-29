@@ -3,11 +3,16 @@ package Vistas;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Conexion.Conexion;
 import Modelo.Evento;
+import Modelo.Persona;
+import Render.Render;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import colores.Colores;
 import imagenes.Imagenes;
@@ -20,14 +25,15 @@ public class VentanaAdministrador extends JFrame  {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
-	private JTable table_1;
+	private JTable table1;
+	private JButton btnEliminar;
 	private Colores colores = new Colores();
 	private Imagenes imagenes = new Imagenes();
 	private JPanel contentPane;
-	
+	protected Statement command;
 	private JList<Evento> listDeportes;
 	private JList<Evento> listLocalizacion;
-	private JTable table_2;
+	
 
 	/**
 	 * Launch the application.
@@ -62,39 +68,53 @@ public class VentanaAdministrador extends JFrame  {
 		contentPane.setLayout(null);		
 		
 		
-		JLabel lblNewLabel = new JLabel("Deporte");
-		lblNewLabel.setBounds(6, 62, 61, 16);
-		contentPane.add(lblNewLabel);
+		JLabel lblDeporte = new JLabel("Deporte");
+		lblDeporte.setBounds(6, 62, 61, 16);
+		contentPane.add(lblDeporte);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ubicacion");
-		lblNewLabel_1.setBounds(165, 62, 68, 16);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblUbicacion = new JLabel("Ubicacion");
+		lblUbicacion.setBounds(165, 62, 68, 16);
+		contentPane.add(lblUbicacion);
 		
-		JButton btnNewButton = new JButton("filtro");
-		btnNewButton.setBounds(364, 57, 117, 29);
-		contentPane.add(btnNewButton);
+		JButton btFiltro = new JButton("filtro");
+		btFiltro.setBounds(364, 57, 117, 29);
+		contentPane.add(btFiltro);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(65, 58, 100, 27);
-		contentPane.add(comboBox);
+		JComboBox comboBoxDeporte = new JComboBox();
+		comboBoxDeporte.setBounds(65, 58, 100, 27);
+		contentPane.add(comboBoxDeporte);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(232, 58, 120, 27);
-		contentPane.add(comboBox_1);
+		JComboBox comboBoxUbicacion = new JComboBox();
+		comboBoxUbicacion.setBounds(232, 58, 120, 27);
+		contentPane.add(comboBoxUbicacion);
 		
-		JButton CerrarSesion = new JButton("Cerrar sesion");
-		CerrarSesion.addActionListener(new ActionListener() {
+		JButton btCerrarSesion = new JButton("Cerrar sesion");
+		btCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		CerrarSesion.setBounds(629, 6, 117, 29);
-		contentPane.add(CerrarSesion);
+		btCerrarSesion.setBounds(629, 6, 117, 29);
+		contentPane.add(btCerrarSesion);
+		//CerrarSesion.addActionListener(new ActionListener()) {
+		//	public void actionPerformer(ActionEvent e) {
+		//		System.exit(0);
+		//	}
+		//}
+		JLabel lblAdministrador = new JLabel("Administrador");
+		lblAdministrador.setBounds(524, 11, 108, 16);
+		contentPane.add(lblAdministrador);
 		
-		JButton btnEliminar = new javax.swing.JButton();
+		JToggleButton btnPerfil = new JToggleButton("Perfil");
+		btnPerfil.setBounds(353, 6, 161, 29);
+		contentPane.add(btnPerfil);
+		
+		// tabla derecha Eliminar Eventos 
+		
+		JButton btnEliminar = new javax.swing.JButton("Eliminar");
 		btnEliminar.setName("e");
 		
-	
+	 
 		JTable tabla = new javax.swing.JTable();
 		tabla.setModel(new javax.swing.table.DefaultTableModel(
 	            new Object [][] {
@@ -102,50 +122,44 @@ public class VentanaAdministrador extends JFrame  {
 	                {null, null, null, null, null, null, btnEliminar},
 	                {null, null, null, null, null, null, btnEliminar},
 	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
+	                {null, null, null, null, null, null, btnEliminar},
 	                {null, null, null, null, null, null, btnEliminar}
 	            },
 	            new String [] {
-	                "Propietario", "Deporte", "Ubicacion", "Participantes", "fecha", " "
+	                "Propietario", "Deporte", "Ubicacion", "Participantes", "Fecha", " "
 	            }
-	        ));
-	        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+	        ));			
+			tabla.addMouseListener(new java.awt.event.MouseAdapter() {
 	            public void mouseClicked(java.awt.event.MouseEvent evt) {
-	                //tablaMouseClicked(evt);
+	        //        //tablaMouseClicked(evt);
 	            }
 	        });
 	        
-	        JScrollPane scrollPane_11 = new JScrollPane();
-			scrollPane_11.setBounds(6, 114, 475, 192);
-			scrollPane_11.setViewportView(tabla);
-			contentPane.add(scrollPane_11);
-			
-			scrollPane_11.setColumnHeaderView(btnEliminar);
-			
-			
-		//CerrarSesion.addActionListener(new ActionListener()) {
-		//	public void actionPerformer(ActionEvent e) {
-		//		System.exit(0);
-		//	}
-		//}
-			tabla.setPreferredScrollableViewportSize(tabla.getPreferredSize());
-
+	    JScrollPane scrollPaneEventos = new JScrollPane();
+	    scrollPaneEventos.setBounds(6, 114, 475, 192);
+	    scrollPaneEventos.setViewportView(tabla);
+	    contentPane.add(scrollPaneEventos);			
+		scrollPaneEventos.setColumnHeaderView(btnEliminar);			
 		
-		JLabel lblNewLabel_2 = new JLabel("Administrador");
-		lblNewLabel_2.setBounds(524, 11, 108, 16);
-		contentPane.add(lblNewLabel_2);
+		tabla.setDefaultRenderer(Object.class, new Render());			
 		
-		JToggleButton perfil = new JToggleButton("Perfil");
-		perfil.setBounds(353, 6, 161, 29);
-		contentPane.add(perfil);
+		tabla.setPreferredScrollableViewportSize(tabla.getPreferredSize());
 		
-		
-		
-		JButton btn2Eliminar = new javax.swing.JButton();
+		// tabla derecha Eliminar Usuarios
+		JButton btn2Eliminar = new javax.swing.JButton("Eliminar");
 		btn2Eliminar.setName("e2");
 		
 		JTable tabla1 = new javax.swing.JTable();
 		tabla1.setModel(new javax.swing.table.DefaultTableModel(
 	            new Object [][] {
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
+	                {null, btn2Eliminar},
 	                {null, btn2Eliminar},
 	                {null, btn2Eliminar},
 	                {null, btn2Eliminar},
@@ -157,23 +171,29 @@ public class VentanaAdministrador extends JFrame  {
 	            }
 	        ));
 	        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
-	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	            public void mouseClicked(java.awt.event.MouseEvent evt1) {
 	                //tablaMouseClicked(evt);
 	            }
 	        });
 		
 		
-	        JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(525, 114, 221, 192);
-			scrollPane2.setViewportView(tabla1);
-			contentPane.add(scrollPane2);
-		
-			scrollPane_11.setColumnHeaderView(btn2Eliminar);
+	        JScrollPane scrollPaneNonmbreUsuario = new JScrollPane();
+			scrollPaneNonmbreUsuario .setBounds(525, 114, 221, 192);
+			scrollPaneNonmbreUsuario .setViewportView(tabla1);
+			contentPane.add(scrollPaneNonmbreUsuario );
+			scrollPaneNonmbreUsuario.setColumnHeaderView(btn2Eliminar);
+			
+			tabla1.setDefaultRenderer(Object.class, new Render());
 			
 			tabla1.setPreferredScrollableViewportSize(tabla.getPreferredSize());
 		
-	        
+			
+		
 
+	        
 	
 	}
+	
+	 
+	
 }
