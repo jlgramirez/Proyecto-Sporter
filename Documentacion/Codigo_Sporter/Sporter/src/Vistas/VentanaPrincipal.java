@@ -46,6 +46,7 @@ public class VentanaPrincipal extends JFrame {
 	private ArrayList<Evento> listaEventos;
 	private static Colores colores = new Colores();
 	private Imagenes imagenes = new Imagenes();
+	private DefaultTableModel modelo = new DefaultTableModel();
 	
 	/**
 	 * Launch the application.
@@ -126,33 +127,36 @@ public class VentanaPrincipal extends JFrame {
 		
 		JButton btnUnirse = new JButton("Unirse");
 		btnUnirse.setName("Unirse");
-		btnUnirse.setBackground(colores.getNaranja());
 		
-		String[] titulos = new String[] {
+		String[] titulos = {
 				"Propietario", "Deporte", "Ubicacion", "Participantes", "fecha", " "
 			};
+		modelo.setColumnIdentifiers(titulos);
+		tablaEventos.setModel(modelo);
+		Object[] informacion = {null, null, null, null, null, btnUnirse};
+		//es funcional pero falta unirlo a mysql
+		/*
+		for(int x = 0; x < listaEventos.size(); x++){
+			informacion[0] = listaEventos.get(x).getId() + "";
+			informacion[1] = listaEventos.get(x).getDeporte() + "";
+			informacion[2] = listaEventos.get(x).getUbicacion() + "";
+			informacion[3] = listaEventos.get(x).getNumeroParticipantes() + "";
+			informacion[4] = listaEventos.get(x).getFecha() + "";
+			modelo.addRow(informacion);
+		}
+		tablaEventos.setModel(modelo);
+		*/
+		//Tabla test
+		for(int x = 0; x < 5; x++){
+			informacion[0] = "0";
+			informacion[1] = "1";
+			informacion[2] = "2";
+			informacion[3] = "3";
+			informacion[4] = "4";
+			modelo.addRow(informacion);
+		}
+		tablaEventos.setModel(modelo);
 		
-		//ObtenerMatrizDatos(x,y) sirve para rellenar la matriz con los datos contenido en la lista de eventos.
-		//Object[][] datos = obtenerMatrizDatos(titulos, btnUnirse);
-		
-		//matriz para probar la vista
-		Object [][] datos = new Object[][] {
-			{1, 2, 3, 4 , 5, btnUnirse},
-			{1, 2, 3, 4 , 5, btnUnirse},
-			{1, 2, 3, 4 , 5, btnUnirse},
-			{1, 2, 3, 4 , 5, btnUnirse}
-		};
-		
-		tablaEventos.setModel(new DefaultTableModel(datos,titulos) {
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false
-			};
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-			
-		});
 		tablaEventos.getTableHeader().setReorderingAllowed(false);
 		tablaEventos.setDefaultRenderer(Object.class, new Render());
 		tablaEventos.setPreferredScrollableViewportSize(tablaEventos.getPreferredSize());
@@ -168,17 +172,5 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(textField_1);
 		contentPane.add(btnBuscar);
 		contentPane.add(scrollPane);
-	}
-	private Object[][] obtenerMatrizDatos(String[] st, JButton btnUnirse){
-		Object informacion[][] = new String[listaEventos.size()][st.length];
-		for(int x = 0; x < informacion.length; x++){
-			informacion[x][0] = listaEventos.get(x).getId() + "";
-			informacion[x][1] = listaEventos.get(x).getDeporte() + "";
-			informacion[x][2] = listaEventos.get(x).getUbicacion() + "";
-			informacion[x][3] = listaEventos.get(x).getNumeroParticipantes() + "";
-			informacion[x][4] = listaEventos.get(x).getFecha() + "";
-			informacion[x][5] = btnUnirse;
-		}
-		return informacion;
 	}
 }
