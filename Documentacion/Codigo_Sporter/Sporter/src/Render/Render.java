@@ -6,6 +6,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
+// Clase que permite incluir botones en una table dinamicamente.
 
 public class Render extends DefaultTableCellRenderer{
 
@@ -14,7 +15,7 @@ public class Render extends DefaultTableCellRenderer{
             boolean isSelected, boolean hasFocus, int row, int column) {
         
         if(value instanceof JButton){
-            JButton btn = (JButton)value;
+            JButton btn = (JButton)value; 
             if(isSelected){
                 btn.setForeground(table.getSelectionForeground());
       btn.setBackground(table.getSelectionBackground());
@@ -32,7 +33,7 @@ public class Render extends DefaultTableCellRenderer{
         }
         
         return super.getTableCellRendererComponent(table, value, isSelected, 
-                hasFocus, row, column); //To change body of generated methods, choose Tools | Templates.
+                hasFocus, row, column); 
     }
 
     
