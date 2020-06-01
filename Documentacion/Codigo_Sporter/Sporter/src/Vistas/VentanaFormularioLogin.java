@@ -1,3 +1,5 @@
+//Autor: Francisco Javier Santiburcio Vicente
+
 package Vistas;
 
 import java.awt.EventQueue;
@@ -29,7 +31,7 @@ public class VentanaFormularioLogin extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,11 +44,11 @@ public class VentanaFormularioLogin extends JFrame {
 			}
 		});
 	}
-
+	*/
 	/**
 	 * Create the frame.
 	 */
-	private VentanaFormularioLogin() {
+	public VentanaFormularioLogin() {
 		setTitle("Sporter");
 		setIconImage(imagenes.getLogo_sin_nombreEscalado(16, 16));
 		setForeground(colores.getNaranja());

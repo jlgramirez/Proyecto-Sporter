@@ -89,8 +89,25 @@ public class Persona extends Usuario{
 	
 	public void meterDeporte(int deporte) throws SQLException {
 		// TODO Auto-generated method stub
-		if(!existente) throw new RuntimeException("Un usuario que no existe no puede tener ni añadir deportes");
+		if(!existente) throw new RuntimeException("Un usuario que no existe no puede tener ni aï¿½adir deportes");
 		command.execute("INSERT INTO `spoter`.`usuarios_has_deporte` (`usuarios_idUsuarios`, `deporte_idDeporte`) VALUES ('"+getId()+"', '"+deporte+"');");
 		practica.add(deporte);
+	}
+	
+	// Autor: Francisco Javier Santiburcio Vicente
+	public boolean confirmarContrasenia(String contrasenia) throws SQLException {
+		boolean correcta = false;
+		ResultSet data = command.executeQuery("Select password from spoter.usuarios user where user.idUsuarios ="+ id +";");
+		data.next();
+		System.out.println(data.getString(1).toString());
+		if(contrasenia.compareTo(data.getString(1).toString()) == 0) {
+			correcta = true;
+		}
+		return correcta;
+	}
+	
+	// Autor: Francisco Javier Santiburcio Vicente
+	public boolean getExistente() {
+		return existente;
 	}
 }

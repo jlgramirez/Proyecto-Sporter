@@ -31,7 +31,7 @@ public class Usuario {
 		ResultSet data = command.executeQuery("Select * from spoter.usuarios user where user.email = '"+ email +"';"); 
 		data.next();
 		nombre = data.getString(2);
-		email = data.getString(3);
+		this.email = data.getString(3);
 		password = data.getString(4);
 		admin = data.getBoolean(5);
 		this.command = command;
