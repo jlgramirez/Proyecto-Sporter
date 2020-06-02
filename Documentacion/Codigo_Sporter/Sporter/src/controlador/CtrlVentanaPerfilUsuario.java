@@ -48,6 +48,7 @@ public class CtrlVentanaPerfilUsuario implements ActionListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {
+		
 		int column = vista.table.getColumnModel().getColumnIndexAtX(evt.getX()); // posicion x de la columna cuando hacemos click
 		int row = evt.getY() / vista.table.getRowHeight(); // fila
 		

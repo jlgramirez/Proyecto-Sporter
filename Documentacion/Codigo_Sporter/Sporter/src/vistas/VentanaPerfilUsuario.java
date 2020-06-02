@@ -288,7 +288,6 @@ public class VentanaPerfilUsuario extends JFrame{
 		for(int i = num; i>=0;i--) {
 			modeloTabla.removeRow(i);
 		}
-		
 	}
 
 	public void cancelarEvento() throws Exception {
