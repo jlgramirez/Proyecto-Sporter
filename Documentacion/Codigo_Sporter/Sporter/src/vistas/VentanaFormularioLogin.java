@@ -98,12 +98,15 @@ public class VentanaFormularioLogin extends JFrame {
 		panel.setBounds(74, 24, 373, 51);
 		panel.setBackground(colores.getVerde());
 		contentPane.add(panel);
+		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombre de usuario:");
+		lblNewLabel.setBounds(94, 8, 94, 14);
 		lblNewLabel.setForeground(colores.getAmarillo());
 		panel.add(lblNewLabel);
 		
 		textUsr = new JTextField();
+		textUsr.setBounds(193, 5, 86, 20);
 		panel.add(textUsr);
 		textUsr.setColumns(10);
 		
@@ -129,7 +132,7 @@ public class VentanaFormularioLogin extends JFrame {
 		panel_1_1.setBackground(colores.getVerde());
 		contentPane.add(panel_1_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Contraseña:");
+		JLabel lblNewLabel_1_1 = new JLabel("ContraseÃ±a:");
 		lblNewLabel_1_1.setForeground(colores.getAmarillo());
 		panel_1_1.add(lblNewLabel_1_1);
 		
@@ -137,7 +140,7 @@ public class VentanaFormularioLogin extends JFrame {
 		panel_1_1.add(passwordField);
 		passwordField.setColumns(10);
 		
-		// Panel para la etiqueta y la selección de DEPORTES
+		// Panel para la etiqueta y la selecciÃ³n de DEPORTES
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(74, 213, 373, 99);
 		panel_2.setBackground(colores.getVerde());
@@ -151,13 +154,13 @@ public class VentanaFormularioLogin extends JFrame {
 		listDeportes.setMultipleMode(true);
 		panel_2.add(listDeportes);
 		
-		// Panel para la etiqueta y la selección de LOCALIZACION
+		// Panel para la etiqueta y la selecciÃ³n de LOCALIZACION
 		JPanel panel_2_1 = new JPanel();
 		panel_2_1.setBounds(74, 324, 373, 51);
 		panel_2_1.setBackground(colores.getVerde());
 		contentPane.add(panel_2_1);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Localización:");
+		JLabel lblNewLabel_2_1 = new JLabel("LocalizaciÃ³n:");
 		lblNewLabel_2_1.setForeground(colores.getAmarillo());
 		panel_2_1.add(lblNewLabel_2_1);
 		
