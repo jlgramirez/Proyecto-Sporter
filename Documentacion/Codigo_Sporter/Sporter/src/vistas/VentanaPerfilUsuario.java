@@ -156,7 +156,7 @@ public class VentanaPerfilUsuario extends JFrame{
 		btnSalir = new JButton("Salir");
 		btnSalir.setName("s");
 		
-		String t[] ={"Nï¿½","FECHA","HORA","PROPIETARIO","DEPORTE","UBICACIï¿½N","Nï¿½ PARTICIPANTES",""}; //Almaceno las columnas en el DefaultTableModel y hago que no sean editable las celdas
+		String t[] ={"Nº","FECHA","HORA","PROPIETARIO","DEPORTE","UBICACIÓN","NºPARTICIPANTES",""}; //Almaceno las columnas en el DefaultTableModel y hago que no sean editable las celdas
 		modeloTabla = new DefaultTableModel(null,t){
 	
 			private static final long serialVersionUID = 1L;
@@ -191,7 +191,7 @@ public class VentanaPerfilUsuario extends JFrame{
 		scrollPane_1.setViewportView(table);
 		contentPane.add(scrollPane_1);
 		
-		btnReturn = new JButton("Volver al tabl\u00F3n");
+		btnReturn = new JButton("Volver al tablón");
 		btnReturn.setBounds(424, 400, 145, 23);
 		btnReturn.setBackground(colores.getNaranja());
 		contentPane.add(btnReturn);
