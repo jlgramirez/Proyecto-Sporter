@@ -21,6 +21,7 @@ public class CtrlVentanaFrmLogin implements ActionListener{
 		String comando = e.getActionCommand();
 		
 		if(comando.contentEquals("CREAR")) {
+			System.out.print("HOLA");
 			try {
 				ventana.crearPerfil();
 			}catch (SQLException e1){
@@ -29,7 +30,6 @@ public class CtrlVentanaFrmLogin implements ActionListener{
 		}else if(comando.contentEquals("CANCELAR")){
 			ventana.cerrarVentana();
 		}
-		
 		
 	}
 	

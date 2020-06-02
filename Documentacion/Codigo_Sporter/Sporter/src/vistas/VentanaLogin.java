@@ -14,6 +14,7 @@ import java.sql.Statement;
 
 import colores.Colores;
 import conexion.Conexion;
+import controlador.CtrlVentanaFrmLogin;
 import controlador.CtrlVentanaLogin;
 import imagenes.Imagenes;
 import modelo.Persona;
@@ -190,6 +191,8 @@ public class VentanaLogin extends JFrame {
 			public void run() {
 				try {
 					VentanaFormularioLogin frame = new VentanaFormularioLogin();
+					CtrlVentanaFrmLogin ctrl = new CtrlVentanaFrmLogin(frame);
+					frame.controlVentana(ctrl);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

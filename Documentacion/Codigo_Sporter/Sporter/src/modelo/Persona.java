@@ -92,6 +92,8 @@ public class Persona extends Usuario{
 		for(String nombre1 : deportes) {
 			this.meterDeporte(deporte.obtenerIdDeporte(nombre1));
 		}
+		
+		System.out.println("/nPERFIL CREADO");
 		 
 	}
 	
@@ -115,7 +117,7 @@ public class Persona extends Usuario{
 	}
 	
 	
-	// Javier: Comprueba si la contraseña recibida como parametro 
+	// Javier: Comprueba si la contraseña recibida como parametro es correcta
 	public boolean confirmarContrasenia(String contrasenia) throws SQLException {
 		boolean correcta = false;
 		ResultSet data = command.executeQuery("Select password from spoter.usuarios user where user.idUsuarios ="+ id +";");

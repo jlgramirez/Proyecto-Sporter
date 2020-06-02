@@ -55,7 +55,7 @@ public class VentanaFormularioLogin extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -143,8 +143,9 @@ public class VentanaFormularioLogin extends JFrame {
 		lblNewLabel_2.setForeground(colores.getAmarillo());
 		panel_2.add(lblNewLabel_2);
 		
-		choice_ubi = new Choice();
-		panel_2.add(choice_ubi);
+		listDeportes = new java.awt.List();
+		listDeportes.setMultipleMode(true);
+		panel_2.add(listDeportes);
 		
 		// Panel para la etiqueta y la selección de LOCALIZACION
 		JPanel panel_2_1 = new JPanel();
@@ -156,9 +157,8 @@ public class VentanaFormularioLogin extends JFrame {
 		lblNewLabel_2_1.setForeground(colores.getAmarillo());
 		panel_2_1.add(lblNewLabel_2_1);
 		
-		listDeportes = new java.awt.List();
-		listDeportes.setMultipleMode(true);
-		panel_2_1.add(listDeportes);
+		choice_ubi = new Choice();
+		panel_2_1.add(choice_ubi);
 		
 		
 		// Panel para los botones
@@ -220,17 +220,14 @@ public class VentanaFormularioLogin extends JFrame {
 		String localidad = choice_ubi.getSelectedItem();
 		String [] lDeportes = listDeportes.getSelectedItems();
 		
-		for(String str : lDeportes) {
-			System.out.println(str);
-		}
-		
 		Persona persona = new Persona(comando);  
 		persona.crearPerfil(usr, localidad, email, password, lDeportes);
 		
 		this.cerrarVentana();
 	}
 	
-	public void cerrarVentana() {
+	public int cerrarVentana() {
 		this.dispose();
+		return 0;
 	}
 }
