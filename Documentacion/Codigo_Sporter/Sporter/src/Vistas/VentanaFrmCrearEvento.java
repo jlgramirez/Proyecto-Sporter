@@ -38,7 +38,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 	private JButton button_CrearEvento, button_Cancelar;
 	
 	private Choice choice_Deporte,choice_Ubicacion;
-	private JLabel lblPropietario,lblDeporte,lblUbicacion,lblFecha,lblHora,lblNumeroParticipantes;
+	private JLabel lblPropietario,lblDeporte,lblUbicacion,lblFecha,lblHora,lblNumeroParticipantes,lblNotificacion;
 	
 
 	/**
@@ -50,7 +50,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 				try {
 					Conexion conexion = new Conexion();
 					command = conexion.getcommand();
-					persona = new Persona(command,"JoseLuis@gmail.com");
+					persona = new Persona(command,"DanielCP89@gmail.com");
 					VentanaFrmCrearEvento vista = new VentanaFrmCrearEvento(persona);
 					CtrlVentanaCrearEvento ctrl = new CtrlVentanaCrearEvento(vista); // Primero te creas el controlador y le metes la vista
 					vista.controlVentana(ctrl); // Segundo: el metodo de la vista controlador le metes el controlador anteriormente creado
@@ -71,7 +71,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		setFont(new Font("Dialog", Font.BOLD, 12));
 		setTitle("Sporter - Crear Evento Deportivo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 423, 416);
+		setBounds(100, 100, 423, 445);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 191, 119));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -155,6 +155,12 @@ public class VentanaFrmCrearEvento extends JFrame {
 		
 		cargarChoiceDeporte(choice_Deporte);
 		cargarChoiceUbicacion(choice_Ubicacion);
+		
+		lblNotificacion = new JLabel("");
+		lblNotificacion.setForeground(Color.BLACK);
+		lblNotificacion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNotificacion.setBounds(10, 381, 236, 14);
+		contentPane.add(lblNotificacion);
 		cargarNumparticipantes();
 	}
 
@@ -194,9 +200,14 @@ public class VentanaFrmCrearEvento extends JFrame {
 			String hora = textField_Hora.getText();
 			String fechaHora = fecha + " " + hora;
 			int numParticipantes = Integer.parseInt(textField_numPart.getText());
-			
-			Evento evento = new Evento(command);
-			evento.crearEvento(persona, idDeporte, ubicacion, fechaHora, numParticipantes);
+			if(fecha.equals("")) {
+				lblNotificacion.setText("*Campo Fecha vacío.");
+			}else if(hora.equals("")){
+				lblNotificacion.setText("*Campo Hora vacío.");
+			}else {
+				Evento evento = new Evento(command);
+				evento.crearEvento(persona, idDeporte, ubicacion, fechaHora, numParticipantes);
+			}
 		}
 		
 		//Método para actualizar el textField_NumeroParticipantes dependiendo del Choice_Deporte seleccionado

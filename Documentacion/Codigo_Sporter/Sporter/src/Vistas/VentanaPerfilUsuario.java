@@ -39,7 +39,7 @@ public class VentanaPerfilUsuario extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	JLabel lbl_Icono, lbl_NombreUsuario, lblLocalidad, lblDeporte,lblEmail,lbl_InfoLocalidad,lbl_InfoDeporte,lbl_InfoEmail,lblHistorial;
+	JLabel lbl_Icono, lbl_NombreUsuario, lblLocalidad, lblDeporte,lblEmail,lbl_InfoLocalidad,lbl_InfoDeporte,lbl_InfoEmail,lblHistorial,lbl_Notificacion;
 	private static Persona persona;
 	protected static Statement command;
 	private static Colores colores = new Colores();
@@ -58,7 +58,7 @@ public class VentanaPerfilUsuario extends JFrame{
 				try {
 					Conexion conexion = new Conexion();
 					command = conexion.getcommand();
-					persona = new Persona(command,"JoseLuis@gmail.com");
+					persona = new Persona(command,"DanielCP89@gmail.com");
 					VentanaPerfilUsuario frame = new VentanaPerfilUsuario(persona);
 					CtrlVentanaPerfilUsuario ctrl = new CtrlVentanaPerfilUsuario(frame);
 					frame.controladorVista(ctrl);
@@ -198,6 +198,12 @@ public class VentanaPerfilUsuario extends JFrame{
 		lblNewLabel.setBounds(10, 60, 108, 14);
 		contentPane.add(lblNewLabel);
 		
+		lbl_Notificacion = new JLabel("");
+		lbl_Notificacion.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbl_Notificacion.setBounds(8, 453, 419, 14);
+		lbl_Notificacion.setForeground(Color.BLACK);
+		contentPane.add(lbl_Notificacion);
+		
 		cargarDatosLabel();
 		generarContenidoTabla();
 		
@@ -295,6 +301,7 @@ public class VentanaPerfilUsuario extends JFrame{
 		Evento evento = new Evento(command,id);
 		evento.borrarevento(persona);
 		modeloTabla.removeRow(table.getSelectedRow());// Elimina la fila que getSelectedRow() devuelve.
+		lbl_Notificacion.setText("*El evento "+evento.getId() +" ha sido cancelado.");
 	}
 
 	public void salirEvento() throws SQLException {
@@ -304,6 +311,6 @@ public class VentanaPerfilUsuario extends JFrame{
 		Evento evento = new Evento(command,id);
 		evento.dejarEvento(persona);
 		modeloTabla.removeRow(table.getSelectedRow());// Elimina la fila que getSelectedRow() devuelve.
+		lbl_Notificacion.setText("*Has dejado de participar en el evento "+evento.getId() +" .");
 	}
-	
 }
