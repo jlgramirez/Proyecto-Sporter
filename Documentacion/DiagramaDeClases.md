@@ -29,4 +29,4 @@ El controlador realiza una comunicación de datos con el modelo y manda una resp
 
 ## 4. Diagrama de clases:
 
-![DiagramaCasosDeUso](https://github.com/JavierSantiburcio/Proyecto-Sporter/blob/master/Documentacion/Imagenes/Imagen_DiagramaClasesSporter.png)
+![DiagramaCasosDeUso](https://github.com/JavierSantiburcio/Proyecto-Sporter/blob/master/Documentacion/Imagenes/Imagen_DiagramaClasesSporter.PNG)
