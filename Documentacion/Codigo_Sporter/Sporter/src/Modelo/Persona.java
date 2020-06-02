@@ -105,8 +105,7 @@ public class Persona extends Usuario{
 	// Daniel Cuevas: obtener el deporter que practica el usuario. Necesario en el perfil de usuario
 	public String getDeporte() throws SQLException {
 		ResultSet data1, data2;
-		data1 = command
-				.executeQuery("SELECT * FROM spoter.usuarios_has_deporte WHERE usuarios_idUsuarios = " + id + ";");
+		data1 = command.executeQuery("SELECT * FROM spoter.usuarios_has_deporte WHERE usuarios_idUsuarios = " + id + ";");
 		data1.next();
 		int idDeporte = data1.getInt(2);
 

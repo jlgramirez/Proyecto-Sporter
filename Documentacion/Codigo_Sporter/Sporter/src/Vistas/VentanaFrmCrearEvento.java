@@ -16,6 +16,8 @@ import Modelo.Ubicacion;
 import colores.Colores;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -38,7 +40,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 	private JButton button_CrearEvento, button_Cancelar;
 	
 	private Choice choice_Deporte,choice_Ubicacion;
-	private JLabel lblPropietario,lblDeporte,lblUbicacion,lblFecha,lblHora,lblNumeroParticipantes,lblNotificacion;
+	private JLabel lblPropietario,lblDeporte,lblUbicacion,lblFecha,lblHora,lblNumeroParticipantes;
 	
 
 	/**
@@ -155,12 +157,6 @@ public class VentanaFrmCrearEvento extends JFrame {
 		
 		cargarChoiceDeporte(choice_Deporte);
 		cargarChoiceUbicacion(choice_Ubicacion);
-		
-		lblNotificacion = new JLabel("");
-		lblNotificacion.setForeground(Color.BLACK);
-		lblNotificacion.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNotificacion.setBounds(10, 381, 236, 14);
-		contentPane.add(lblNotificacion);
 		cargarNumparticipantes();
 	}
 
@@ -201,12 +197,13 @@ public class VentanaFrmCrearEvento extends JFrame {
 			String fechaHora = fecha + " " + hora;
 			int numParticipantes = Integer.parseInt(textField_numPart.getText());
 			if(fecha.equals("")) {
-				lblNotificacion.setText("*Campo Fecha vacío.");
+				JOptionPane.showMessageDialog(this, "Campo Fecha vacío.","ERROR", JOptionPane.ERROR_MESSAGE, null);
 			}else if(hora.equals("")){
-				lblNotificacion.setText("*Campo Hora vacío.");
+				JOptionPane.showMessageDialog(this, "Campo Hora vacío.","ERROR", JOptionPane.ERROR_MESSAGE, null);
 			}else {
 				Evento evento = new Evento(command);
 				evento.crearEvento(persona, idDeporte, ubicacion, fechaHora, numParticipantes);
+				JOptionPane.showMessageDialog(this, "El evento deportivo se ha creado correctamente.","Mensaje", JOptionPane.INFORMATION_MESSAGE, null);
 			}
 		}
 		
