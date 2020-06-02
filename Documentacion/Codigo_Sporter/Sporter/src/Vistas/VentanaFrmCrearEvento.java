@@ -1,4 +1,4 @@
-// Autor : Daniel Cuevas Pérez
+// Autor : Daniel Cuevas Pï¿½rez
 
 package Vistas;
 
@@ -97,7 +97,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		lblDeporte.setForeground(colores.getAmarillo());
 		contentPane.add(lblDeporte);
 		
-		lblUbicacion = new JLabel("UBICACIÓN");
+		lblUbicacion = new JLabel("UBICACIï¿½N");
 		lblUbicacion.setBounds(33, 140, 236, 14);
 		lblUbicacion.setForeground(colores.getAmarillo());
 		contentPane.add(lblUbicacion);
@@ -124,7 +124,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		textField_Hora.setBounds(33, 280, 236, 20);
 		contentPane.add(textField_Hora);
 		
-		lblNumeroParticipantes = new JLabel("NÚMERO PARTICIPANTES");
+		lblNumeroParticipantes = new JLabel("Nï¿½MERO PARTICIPANTES");
 		lblNumeroParticipantes.setBounds(33, 320, 236, 14);
 		lblNumeroParticipantes.setForeground(colores.getAmarillo());
 		contentPane.add(lblNumeroParticipantes);
@@ -201,7 +201,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 			evento.crearEvento(persona, idDeporte, ubicacion, fechaHora, numParticipantes);
 		}
 		
-		//Método para actualizar el textField_NumeroParticipantes dependiendo del Choice_Deporte seleccionado
+		//Mï¿½todo para actualizar el textField_NumeroParticipantes dependiendo del Choice_Deporte seleccionado
 		public void cargarNumparticipantes() throws SQLException {
 			Conexion conexion = new Conexion();
 			command = conexion.getcommand();

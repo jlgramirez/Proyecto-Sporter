@@ -25,7 +25,6 @@ public class Deporte {
 		this.command = command;
 	}
 	
-
 	public int getId() {
 		return id;
 	}

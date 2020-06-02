@@ -72,7 +72,7 @@ public class Persona extends Usuario{
 		
 	}
 	
-	public void crearPerfil(String nombre,String localidad,String email,String password) throws SQLException {
+	public void crearPerfil(String nombre,String localidad,String email,String password, String [] deportes) throws SQLException {
 		if(existente) throw new RuntimeException("Un usuario que existe no puede crear otro usuario");
 		
 		command.execute("INSERT INTO `spoter`.`usuarios` (`nombre`, `email`, `password`, `admin`, `localidad`) VALUES "
@@ -85,6 +85,14 @@ public class Persona extends Usuario{
 		
 		
 		existente = !existente;
+		
+		// Javier: Aniade deportes al perfil recibiendo como parámetro un array
+		Deporte deporte = new Deporte(command);
+		
+		for(String nombre1 : deportes) {
+			this.meterDeporte(deporte.obtenerIdDeporte(nombre1));
+		}
+		 
 	}
 	
 	public void meterDeporte(int deporte) throws SQLException {
@@ -94,7 +102,8 @@ public class Persona extends Usuario{
 		practica.add(deporte);
 	}
 	
-	// Autor: Francisco Javier Santiburcio Vicente
+	
+	// Javier: Comprueba si la contraseña recibida como parametro 
 	public boolean confirmarContrasenia(String contrasenia) throws SQLException {
 		boolean correcta = false;
 		ResultSet data = command.executeQuery("Select password from spoter.usuarios user where user.idUsuarios ="+ id +";");
@@ -106,7 +115,7 @@ public class Persona extends Usuario{
 		return correcta;
 	}
 	
-	// Autor: Francisco Javier Santiburcio Vicente
+	// Javier: Devuelve el atributo existente
 	public boolean getExistente() {
 		return existente;
 	}
