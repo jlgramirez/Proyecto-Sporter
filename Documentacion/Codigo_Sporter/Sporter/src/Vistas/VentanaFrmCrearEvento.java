@@ -1,4 +1,4 @@
-// Autor : Daniel Cuevas Pï¿½rez
+// Autor : Daniel Cuevas Pérez - Ventana formulario crear evento
 
 package Vistas;
 
@@ -24,8 +24,6 @@ import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
-import javax.swing.DropMode;
 import java.awt.Choice;
 
 
@@ -52,7 +50,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 				try {
 					Conexion conexion = new Conexion();
 					command = conexion.getcommand();
-					persona = new Persona(command,"DanielCP89@gmail.com");
+					persona = new Persona(command,"JoseLuis@gmail.com");
 					VentanaFrmCrearEvento vista = new VentanaFrmCrearEvento(persona);
 					CtrlVentanaCrearEvento ctrl = new CtrlVentanaCrearEvento(vista); // Primero te creas el controlador y le metes la vista
 					vista.controlVentana(ctrl); // Segundo: el metodo de la vista controlador le metes el controlador anteriormente creado
@@ -66,14 +64,14 @@ public class VentanaFrmCrearEvento extends JFrame {
 	}
 	
 	
-//----------------------------------------------------------------- INICIO ESTRUCTURA VENTANA ------------------------------------------------------------------------//
+//------------------------------------------------------------ INICIO ESTRUCTURA VENTANA ---------------------------------------------------------//
 	
 	public VentanaFrmCrearEvento(Persona persona) throws SQLException {
 		
 		setFont(new Font("Dialog", Font.BOLD, 12));
 		setTitle("Sporter - Crear Evento Deportivo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 352, 528);
+		setBounds(100, 100, 423, 416);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 191, 119));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -86,7 +84,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		contentPane.add(lblPropietario);
 		
 		textField_Propietario = new JTextField();
-		textField_Propietario.setBounds(33, 40, 236, 20);
+		textField_Propietario.setBounds(33, 40, 342, 20);
 		textField_Propietario.setText(persona.getNombre());
 		textField_Propietario.setEditable(false);
 		contentPane.add(textField_Propietario);
@@ -97,7 +95,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		lblDeporte.setForeground(colores.getAmarillo());
 		contentPane.add(lblDeporte);
 		
-		lblUbicacion = new JLabel("UBICACIï¿½N");
+		lblUbicacion = new JLabel("UBICACIÓN");
 		lblUbicacion.setBounds(33, 140, 236, 14);
 		lblUbicacion.setForeground(colores.getAmarillo());
 		contentPane.add(lblUbicacion);
@@ -110,7 +108,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		textField_Fecha = new JTextField();
 		textField_Fecha.setToolTipText("");
 		textField_Fecha.setColumns(10);
-		textField_Fecha.setBounds(33, 220, 236, 20);
+		textField_Fecha.setBounds(33, 220, 342, 20);
 		contentPane.add(textField_Fecha);
 		
 		lblHora = new JLabel("HORA (hh:mm:ss)");
@@ -121,28 +119,28 @@ public class VentanaFrmCrearEvento extends JFrame {
 		textField_Hora = new JTextField();
 		textField_Hora.setToolTipText("");
 		textField_Hora.setColumns(10);
-		textField_Hora.setBounds(33, 280, 236, 20);
+		textField_Hora.setBounds(33, 280, 342, 20);
 		contentPane.add(textField_Hora);
 		
-		lblNumeroParticipantes = new JLabel("Nï¿½MERO PARTICIPANTES");
-		lblNumeroParticipantes.setBounds(33, 320, 236, 14);
+		lblNumeroParticipantes = new JLabel("N\u00BAJUGADORES");
+		lblNumeroParticipantes.setBounds(285, 80, 90, 14);
 		lblNumeroParticipantes.setForeground(colores.getAmarillo());
 		contentPane.add(lblNumeroParticipantes);
 		
 		textField_numPart = new JTextField();
 		textField_numPart.setColumns(10);
-		textField_numPart.setBounds(33, 340, 236, 20);
+		textField_numPart.setBounds(285, 100, 90, 20);
 		textField_numPart.setEditable(false);
 		contentPane.add(textField_numPart);
 		
 		
 		button_CrearEvento = new JButton("Crear");
-		button_CrearEvento.setBounds(33, 403, 90, 22);
+		button_CrearEvento.setBounds(84, 333, 90, 22);
 		button_CrearEvento.setBackground(colores.getNaranja());
 		contentPane.add(button_CrearEvento);
 		
 		button_Cancelar = new JButton("Cancelar");
-		button_Cancelar.setBounds(179, 403, 90, 22);
+		button_Cancelar.setBounds(236, 333, 90, 22);
 		button_Cancelar.setBackground(colores.getNaranja());
 		contentPane.add(button_Cancelar);
 		
@@ -152,7 +150,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 		
 		
 		choice_Ubicacion = new Choice();
-		choice_Ubicacion.setBounds(33, 160, 236, 20);
+		choice_Ubicacion.setBounds(33, 160, 342, 20);
 		contentPane.add(choice_Ubicacion);
 		
 		cargarChoiceDeporte(choice_Deporte);
@@ -161,9 +159,9 @@ public class VentanaFrmCrearEvento extends JFrame {
 	}
 
 
-//----------------------------------------------------------------- FIN INICIO ESTRUCTURA VENTANA ------------------------------------------------------------------------//
+//--------------------------------------------------------- FIN INICIO ESTRUCTURA VENTANA -----------------------------------------------------------//
 	
-//------------------------------------------------------------------------ CONTROLADORES ---------------------------------------------------------------------------------//
+//----------------------------------------------------------------- CONTROLADORES -------------------------------------------------------------------//
 		
 		public void controlVentana(ActionListener ctrl){
 			button_CrearEvento.addActionListener(ctrl);
@@ -179,9 +177,9 @@ public class VentanaFrmCrearEvento extends JFrame {
 		}
 		
 		
-//---------------------------------------------------------------------- FIN CONTROLADORES ---------------------------------------------------------------------------------//		
+//---------------------------------------------------------------- FIN CONTROLADORES ------------------------------------------------------//		
 		
-//---------------------------------------------------------------------- METODOS AUXILIADRES -------------------------------------------------------------------------------//
+//---------------------------------------------------------------- METODOS AUXILIADRES ----------------------------------------------------//
 		
 		public void crearEvento() throws SQLException {
 			
@@ -201,7 +199,7 @@ public class VentanaFrmCrearEvento extends JFrame {
 			evento.crearEvento(persona, idDeporte, ubicacion, fechaHora, numParticipantes);
 		}
 		
-		//Mï¿½todo para actualizar el textField_NumeroParticipantes dependiendo del Choice_Deporte seleccionado
+		//Método para actualizar el textField_NumeroParticipantes dependiendo del Choice_Deporte seleccionado
 		public void cargarNumparticipantes() throws SQLException {
 			Conexion conexion = new Conexion();
 			command = conexion.getcommand();
@@ -216,7 +214,6 @@ public class VentanaFrmCrearEvento extends JFrame {
 		private void cargarChoiceDeporte(Choice c) throws SQLException {
 			Conexion conexion = new Conexion();
 			command = conexion.getcommand();
-			
 			Deporte deporte = new Deporte(command);
 			List<String> listDeporte = deporte.obtenerListaDeporte();
 			for(String item : listDeporte) {
@@ -237,5 +234,5 @@ public class VentanaFrmCrearEvento extends JFrame {
 		public void cerrarVentana() {
 			this.dispose();
 		}
-//---------------------------------------------------------------------- FIN  METODOS AUXILIADRES -------------------------------------------------------------------------------//
+//--------------------------------------------------------------- FIN  METODOS AUXILIADRES -----------------------------------------------------------//
 }

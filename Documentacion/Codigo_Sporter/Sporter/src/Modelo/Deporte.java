@@ -42,7 +42,6 @@ public class Deporte {
 	}
 	
 	//Daniel: Obtener una lista con todos los nombres de deportes y usarla para cargar el choice de la vista crear evento deportivo
-	@SuppressWarnings("unchecked")
 	public List<String> obtenerListaDeporte() throws SQLException {
 		List<String> listDeporte = new ArrayList<String>();
 		ResultSet data = command.executeQuery("SELECT nombre FROM spoter.deporte;");
