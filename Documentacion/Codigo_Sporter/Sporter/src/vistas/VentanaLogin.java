@@ -146,7 +146,6 @@ public class VentanaLogin extends JFrame {
 		boton_crearUsuario.setActionCommand("CREAR USUARIO");
 	}
 	
-	
 	// 
 	@SuppressWarnings("deprecation")
 	public void iniciarSesion() throws SQLException {

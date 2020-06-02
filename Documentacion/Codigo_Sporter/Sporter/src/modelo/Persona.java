@@ -88,8 +88,8 @@ public class Persona extends Usuario{
 		
 		// Javier: Aniade deportes al perfil recibiendo como parámetro un array
 		Deporte deporte = new Deporte(command);
-		
-		for(String nombre1 : deportes) {
+		java.util.List <String> deportes1 = deporte.obtenerListaDeporte();
+		for(String nombre1 : deportes1) {
 			this.meterDeporte(deporte.obtenerIdDeporte(nombre1));
 		}
 		
