@@ -250,6 +250,7 @@ public class VentanaFormularioLogin extends JFrame {
 		String usr = textUsr.getText();
 		String email = textEmail.getText();
 		localizacion = choice_ubi.getSelectedItem();
+		@SuppressWarnings("deprecation")
 		String password = passwordField.getText();
 		Persona persona = new Persona(comando);  
 		String [] deportes = listDeportes.getSelectedItems();
