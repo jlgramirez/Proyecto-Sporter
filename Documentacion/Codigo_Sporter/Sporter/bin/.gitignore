@@ -5,10 +5,16 @@
 /Testing/
 /Vistas/
 /colores/
+/icono_usuario.png
 /imagenes/
 /logo perfil.png
 /logo.png
 /logo_sin_fondo.png
 /logo_sin_nombre.png
 /logo_solo_nombre.png
-/icono_usuario.png
+/conexion/
+/controlador/
+/modelo/
+/render/
+/testing/
+/vistas/
