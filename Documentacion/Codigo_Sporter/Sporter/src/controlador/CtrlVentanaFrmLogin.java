@@ -12,10 +12,12 @@ import vistas.VentanaFormularioLogin;
 public class CtrlVentanaFrmLogin implements ActionListener, ItemListener{
 	
 	private VentanaFormularioLogin ventana;
+	private boolean modificar;
 	
-	public CtrlVentanaFrmLogin(VentanaFormularioLogin ventana) {
+	public CtrlVentanaFrmLogin(VentanaFormularioLogin ventana, boolean modificar) {
 		super();
 		this.ventana = ventana;
+		this.modificar = modificar;
 	}
 
 	@Override
@@ -23,11 +25,18 @@ public class CtrlVentanaFrmLogin implements ActionListener, ItemListener{
 		String comando = e.getActionCommand();
 		
 		if(comando.contentEquals("CREAR")) {
-			System.out.print("HOLA");
-			try {
-				ventana.crearPerfil();
-			}catch (SQLException e1){
-				e1.printStackTrace();
+			if(!modificar) {
+				try {
+					ventana.crearPerfil();
+				}catch (SQLException e1){
+					e1.printStackTrace();
+				}
+			}else {
+				try {
+					ventana.modificarPerfil();
+				}catch (SQLException e1){
+					e1.printStackTrace();
+				}
 			}
 		}else if(comando.contentEquals("CANCELAR")){
 			ventana.cerrarVentana();

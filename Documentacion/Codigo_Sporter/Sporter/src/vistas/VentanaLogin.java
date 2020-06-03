@@ -88,7 +88,9 @@ public class VentanaLogin extends JFrame {
 		field_usuario.setColumns(10);
 		
 		// Campos Contrasenia
-		JLabel lblNewLabel_1 = new JLabel("Contraseña:");
+		char enie = 'ñ';
+		char n = '\u0241';
+		JLabel lblNewLabel_1 = new JLabel("Contrase"+ enie +"a:");
 		lblNewLabel_1.setBounds(0, 43, 93, 16);
 		panel_1.add(lblNewLabel_1);
 		lblNewLabel_1.setForeground(colores.getAmarillo());
@@ -214,7 +216,7 @@ public class VentanaLogin extends JFrame {
 				try {
 					Persona persona = null;
 					VentanaFormularioLogin frame = new VentanaFormularioLogin(persona, false);
-					CtrlVentanaFrmLogin ctrl = new CtrlVentanaFrmLogin(frame);
+					CtrlVentanaFrmLogin ctrl = new CtrlVentanaFrmLogin(frame, false);
 					frame.controlVentana(ctrl);
 					frame.setVisible(true);
 				} catch (Exception e) {
