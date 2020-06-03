@@ -1,7 +1,13 @@
-<<<<<<< HEAD
-=======
+/colores/
 /conexion/
-/modelo/
 /controlador/
->>>>>>> branch 'master' of https://github.com/JavierSantiburcio/Proyecto-Sporter
+/icono_usuario.png
+/imagenes/
+/logo perfil.png
+/logo.png
+/logo_sin_fondo.png
+/logo_sin_nombre.png
+/logo_solo_nombre.png
+/render/
+/testing/
 /vistas/

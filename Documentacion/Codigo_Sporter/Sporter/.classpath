@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="mysql-connector-java-8.0.20.jar"/>
+	<classpathentry exported="true" kind="lib" path="mysql-connector-java-8.0.20.jar" sourcepath=""/>
 	<classpathentry exported="true" kind="lib" path="lib/apiguardian-api-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/junit-jupiter-5.4.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/junit-jupiter-api-5.4.2.jar"/>

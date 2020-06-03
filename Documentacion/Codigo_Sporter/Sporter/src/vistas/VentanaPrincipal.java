@@ -1,62 +1,43 @@
 package vistas;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JLabel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.Box;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextField;
-import javax.swing.JMenu;
-import javax.swing.JScrollBar;
-import javax.swing.ListSelectionModel;
-import javax.swing.AbstractListModel;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.event.ActionListener;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.ImageIcon;
-import javax.swing.JFormattedTextField;
-import java.awt.color.*;
 import java.awt.Color;
+import java.sql.SQLException;
 
 import colores.Colores;
+import conexion.Conexion;
 import imagenes.Imagenes;
-import modelo.Evento;
+import modelo.*;
 import render.Render;
-
-import javax.swing.border.BevelBorder;
 import java.util.ArrayList;
-
-import javax.swing.border.MatteBorder;
 
 public class VentanaPrincipal extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTable tablaEventos;
+	protected static Statement command;
 	private ArrayList<Evento> listaEventos;
+	private Usuario persona;
 	private static Colores colores = new Colores();
 	private Imagenes imagenes = new Imagenes();
 	private DefaultTableModel modelo = new DefaultTableModel();
 	
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Conexion conexion = new Conexion();
+					command = conexion.getcommand();
 					VentanaPrincipal frame = new VentanaPrincipal();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -64,12 +45,14 @@ public class VentanaPrincipal extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Persona persona) throws SQLException{
+		//Estetica ventana
+		setResizable(false);
 		setTitle("Sporter");
 		setIconImage(imagenes.getLogo_sin_nombreEscalado(16, 16));
 		setForeground(colores.getNaranja());
@@ -114,8 +97,8 @@ public class VentanaPrincipal extends JFrame {
 		textField_1.setBounds(327, 58, 96, 20);
 		textField_1.setColumns(10);
 		
-		JLabel lblRayanChavesDa = new JLabel("Rayan Chaves Da Silva");
-		lblRayanChavesDa.setBounds(286, 20, 147, 14);
+		JLabel lblUsuario = new JLabel(persona.getNombre());
+		lblUsuario.setBounds(217, 20, 216, 14);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(34, 86, 516, 457);
@@ -166,7 +149,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		contentPane.setLayout(null);
 		contentPane.add(btnCrearEvento);
-		contentPane.add(lblRayanChavesDa);
+		contentPane.add(lblUsuario);
 		contentPane.add(btnCerrarSesion);
 		contentPane.add(lblIntroduzcaDeporte);
 		contentPane.add(textField);

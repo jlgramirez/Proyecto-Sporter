@@ -199,7 +199,7 @@ public class VentanaLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					VentanaPrincipal frame = new VentanaPrincipal(persona);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
