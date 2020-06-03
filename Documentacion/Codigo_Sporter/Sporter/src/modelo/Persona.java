@@ -109,7 +109,7 @@ public class Persona extends Usuario{
 		ResultSet data;
 		List<String> listDeportes = new ArrayList<String>();
 		data = command.executeQuery("SELECT nombre FROM spoter.deporte D "
-				+ "INNER JOIN spoter.usuarios_has_deporte UD ON UD.usuarios_idUsuarios = 26 && D.idDeporte = UD.deporte_idDeporte;");
+				+ "INNER JOIN spoter.usuarios_has_deporte UD ON UD.usuarios_idUsuarios = "+ this.id +" && D.idDeporte = UD.deporte_idDeporte;");
 		while(data.next()) {
 				listDeportes.add(data.getString(1));
 		}
