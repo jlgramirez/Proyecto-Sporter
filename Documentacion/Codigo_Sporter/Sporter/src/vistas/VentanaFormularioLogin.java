@@ -313,6 +313,23 @@ public class VentanaFormularioLogin extends JFrame {
 		this.cerrarVentana();
 	}
 	
+	
+    // Metodo encargado de modificar el perfil de un usario 
+	
+	public void modificarPerfil() throws SQLException {
+		String usr = textUsr.getText();
+		String email = textEmail.getText();
+		localizacion = choice_ubi.getSelectedItem();
+		@SuppressWarnings("deprecation")
+		String password = passwordField.getText();
+		Persona persona = new Persona(comando);
+		String [] deportes = listDeportes.getSelectedItems();
+		
+		persona.modificarPerfil(usr, localizacion, email, password, deportes); 
+		
+		this.cerrarVentana();
+	}
+	
 	public void cerrarVentana() {
 		this.dispose();
 	}
