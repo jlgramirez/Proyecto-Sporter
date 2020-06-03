@@ -324,10 +324,11 @@ public class VentanaPerfilUsuario extends JFrame{
 	}
 
 	//Daniel: Navegación a la ventana del formulario de modificar perfil de Javi
-	public void nuevaVentana() {
+	public void nuevaVentana() throws SQLException {
 		VentanaFormularioLogin nuevaVentana = new VentanaFormularioLogin(persona, true);
 		CtrlVentanaFrmLogin ctrl = new CtrlVentanaFrmLogin(nuevaVentana);
 		nuevaVentana.controlVentana(ctrl);
+		nuevaVentana.setVisible(true);
 	}
 //----------------------------------------------------------------- FIN  METODOS AUXILIARES ---------------------------------------------------------------------------//	
 }

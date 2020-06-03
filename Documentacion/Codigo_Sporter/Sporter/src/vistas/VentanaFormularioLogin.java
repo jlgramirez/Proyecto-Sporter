@@ -61,7 +61,7 @@ public class VentanaFormularioLogin extends JFrame {
 	private boolean modificar;
 	/**
 	 * Launch the application.
-	 */
+	 *
 	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,9 +81,11 @@ public class VentanaFormularioLogin extends JFrame {
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	public VentanaFormularioLogin() throws SQLException{
-		this.persona = new Persona(comando, "jiji");
-		this.modificar = true;
+	public VentanaFormularioLogin(Persona persona, boolean modificar) throws SQLException{
+		//this.persona = new Persona(comando, "jiji"); -----------PARA PRUEBAS
+		//this.modificar = true;
+		this.persona = persona; 
+		this.modificar = modificar;
 		
 		setTitle("Sporter");
 		setIconImage(imagenes.getLogo_sin_nombreEscalado(16, 16));

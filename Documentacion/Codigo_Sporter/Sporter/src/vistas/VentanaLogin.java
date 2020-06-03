@@ -212,7 +212,8 @@ public class VentanaLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaFormularioLogin frame = new VentanaFormularioLogin();
+					Persona persona = null;
+					VentanaFormularioLogin frame = new VentanaFormularioLogin(persona, false);
 					CtrlVentanaFrmLogin ctrl = new CtrlVentanaFrmLogin(frame);
 					frame.controlVentana(ctrl);
 					frame.setVisible(true);
